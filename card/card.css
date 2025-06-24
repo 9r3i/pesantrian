@@ -1,0 +1,138 @@
+/* card.css */
+/* font-face */
+@font-face{
+  font-family:'consolas';
+  src:url('fonts/consola.ttf') format('truetype');
+  src:local('Consolas'), url('fonts/consola.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}
+@font-face{
+  font-family:'Segoe UI Lite';
+  src:url('fonts/segoeuil.ttf');
+  src:url('fonts/segoeuil.ttf') format('truetype');
+}
+@font-face{
+  font-family:'Neuropol';
+  src:url('fonts/neuropol.ttf');
+  src:url('fonts/neuropol.ttf') format('truetype');
+}
+@font-face{
+  font-family:'arialnarrow';
+  src:url('fonts/arialnarrow.ttf');
+  src:url('fonts/arialnarrow.ttf') format('truetype');
+}
+@font-face{
+  font-family:'Traditional Arabic';
+  src:url('fonts/trado.ttf');
+  src:url('fonts/trado.ttf') format('truetype');
+}
+@font-face{font-family:'Tahoma';src:url('fonts/tahoma.ttf');}
+@font-face{font-family:'Felbridge';src:url('fonts/felbridge.ttf');}
+@font-face{font-family:'Tempus';src:url('fonts/tempus.ttf');}
+@font-face{font-family:'arabic';src:url('fonts/trado.ttf');}
+
+
+
+/* reset */
+*,*:before,*:after{
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -o-box-sizing:border-box;
+  box-sizing:border-box;
+  font-family:'Segoe UI Lite',Tahoma,Sans-Serif,'consolas',monospace;
+  outline:none;
+}
+
+body{
+  margin:0px auto;
+  padding:3px;
+  display:block;
+  background-color:#fff;
+  position:relative;
+
+}
+
+.card{
+  display:inline-block;
+  position:relative;
+  /*
+  width:165px;
+  height:270px;
+  5.5 x 9 cm = 208 x 340 pixel
+  */
+  width:208px;
+  height:340px;
+  aspect-ratio:5.5 / 9;
+  vertical-align:top;
+  background-color:#309695;
+  box-shadow:inset 0px 0px 340px 340px #309695;
+  color:#fff;
+  font-weight:bold;
+  font-size:16px;
+  padding:20px;
+  margin:0px 3px 3px 0px;
+}
+.header{
+  /* width:125px; */
+  width:168px;
+  margin:0px 0px 10px;
+  padding:0px;
+  overflow:hidden;
+}
+.qrcode{
+  /*
+  width:125px;
+  height:125px;
+  */
+  width:168px;
+  height:168px;
+  padding:10px;
+  margin:0px;
+  border:0px none;
+  box-shadow:inset 0px 0px 9px #333;
+  background-color:#fff;
+}
+.name{
+  text-align:center;
+  padding:0px;
+  margin:10px 0px 10px;
+  /* font-size:10px; */
+  font-size:12px;
+  font-weight:bold;
+  color:#fff;
+}
+.nis{
+  text-align:center;
+  padding:0px;
+  margin:0px;
+  font-size:12px;
+  font-weight:bold;
+  color:#fff;
+}
+.ibg{
+  width:50px;
+  position:absolute;
+  top:310px;
+  left:145px;
+  opacity:0.1;
+  transform:rotate(340deg);
+}
+
+
+@media print{
+  .name,
+  .nis{
+    font-size:12px;
+    font-weight:bold;
+    color:transparent;
+    text-shadow:0px 0px 0px #fff;
+  }
+}
+
+
+
+
+
+
+
