@@ -1,0 +1,149 @@
+/* card.css */
+/* font-face */
+@font-face{
+  font-family:'consolas';
+  src:url('consola.ttf') format('truetype');
+  src:local('Consolas'), url('consola.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}
+@font-face{
+  font-family:'Segoe UI Lite';
+  src:url('segoeuil.ttf');
+  src:url('segoeuil.ttf') format('truetype');
+}
+
+
+
+/* reset */
+*,*:before,*:after{
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -o-box-sizing:border-box;
+  box-sizing:border-box;
+  font-family:'Segoe UI Lite',Sans-Serif,'consolas',monospace;
+  outline:none;
+}
+
+body{
+  margin:0px auto;
+  padding:3px;
+  display:block;
+  background-color:#eed;
+  position:relative;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+.card{
+  display:block;
+  position:relative;
+  /*
+  width:165px;
+  height:270px;
+  5.5 x 9 cm = 208 x 340 pixel
+  aspect-ratio:5.4 / 8.5;
+  width:204px;
+  */
+  width:321px;
+  height:321px;
+  vertical-align:top;
+  background-color:#309695;
+  box-shadow:inset 0px 0px 321px 321px #309695;
+  color:#fff;
+  font-weight:bold;
+  font-size:16px;
+  padding:20px;
+  margin:0px 0px 0px 0px;
+  text-align:center;
+  border-radius:150px 0px 150px 0px;
+  box-shadow:10px 20px 15px -10px #309695 inset 0px 0px 400px #309695;
+}
+.presence{
+  display:inline-block;
+  position:relative;
+  /*
+  width:165px;
+  height:270px;
+  5.5 x 9 cm = 208 x 340 pixel
+  */
+  width:204px;
+  height:321px;
+  aspect-ratio:5.4 / 8.5;
+  vertical-align:top;
+  background-color:#fff;
+  box-shadow:inset 0px 0px 321px 321px #fff;
+  color:#fff;
+  font-weight:bold;
+  font-size:16px;
+  padding:20px;
+  margin:0px 1px 1px 0px;
+  border:1px solid #ddd;
+}
+.header{
+  /* width:125px; */
+  width:181px;
+  margin:0px auto 10px;
+  padding:0px;
+  overflow:hidden;
+}
+.qrcode{
+  /*
+  width:125px;
+  height:125px;
+  */
+  width:164px;
+  height:164px;
+  padding:10px;
+  margin:0px auto;
+  border:0px none;
+  box-shadow:inset 0px 0px 9px #333;
+  background-color:#fff;
+}
+.name{
+  text-align:center;
+  padding:0px;
+  margin:10px 0px 5px;
+  /* font-size:10px; */
+  font-size:12px;
+  font-weight:bold;
+  color:#fff;
+}
+.nis{
+  text-align:center;
+  padding:0px;
+  margin:0px;
+  font-size:12px;
+  font-weight:bold;
+  color:#fff;
+}
+.ibg{
+  width:50px;
+  position:absolute;
+  top:270px;
+  left:30px;
+  opacity:0.3;
+  transform:rotate(340deg);
+}
+
+@media print{
+  .name,
+  .nis{
+    font-size:12px;
+    font-weight:bold;
+    color:transparent;
+    text-shadow:0px 0px 0px #fff;
+  }
+}
+
+
+
+
+
+
+
