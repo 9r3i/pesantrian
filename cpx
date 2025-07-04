@@ -1,0 +1,10 @@
+ai tool peureut css/pesantrian.css && ai tool peureut js/pesantrian.js
+
+mv -fv /sdcard/download/pesantrian.min.js js/pesantrian.min.obf.js
+
+ai abl app config
+ai vco status
+ai vco push
+
+
+
