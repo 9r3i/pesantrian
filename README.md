@@ -1,5 +1,16 @@
 # pesantrian
-an app with pesantrian
+this readme.md file is just a note for myself, no one would know.
+
+# comfiguration
+dont forget to configure this global constants
+```js
+const EVA_API_HOST     = "EVA_ACCESS_TOKEN",
+      EVA_ACCESS_TOKEN = "EVA_ACCESS_TOKEN",
+      REPO_HOST        = "REPO_HOST",
+      CORNER_HOST      = "CORNER_HOST",
+      QR_HOST          = "QR_HOST";
+```
+or use raw constant segement from abl
 
 # steps to compile and deploy
 - make sure the production is true
@@ -16,7 +27,7 @@ an app with pesantrian
 
 # compile and deploy
 
-## peureut heula
+## peureut heula a.k.a. minify
 ```
 ai tool peureut css/pesantrian.css && ai tool peureut js/pesantrian.js
 ```
