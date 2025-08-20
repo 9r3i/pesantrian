@@ -58,5 +58,21 @@ ai vco status
 ai vco push
 ```
 
+# cordova config
+```
+------[cordova]------
+apt install npm
+npm install -g cordova
+apt install openjdk-17-jdk
+apt install snapd
+snap install core
+snap install androidsdk
+snap install gradle
+--------------------------
+add to ~/.bashrc
+export ANDROID_SDK_ROOT=/opt/android-sdk
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+```
+
 
 
