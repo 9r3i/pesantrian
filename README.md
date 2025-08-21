@@ -76,3 +76,24 @@ export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
 
 
+# queries
+
+## scan_presence
+```
+scan_presence
+- id      aid()
+- time    time()
+- year    int(4,2024)
+- month   int(2,0)
+- date    int(2,1)
+- session int(2,1)
+- tid     int(10,0)
+- sid     int(10,0)
+- pid     int(10,0)
+
+[QUERY]
+call ldb query "create table scan_presence id=aid()&time=time()&year=int(4,2024)&month=int(2,0)&date=int(2,1)&session=int(2,1)&tid=int(10,0)&sid=int(10,0)&pid=int(10,0)"
+```
+
+
+
