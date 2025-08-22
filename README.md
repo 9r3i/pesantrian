@@ -76,7 +76,10 @@ export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
 
 
+
+
 # queries
+these queries are made for eva api 
 
 ## scan_presence
 ```
@@ -95,5 +98,20 @@ scan_presence
 call ldb query "create table scan_presence id=aid()&time=time()&year=int(4,2024)&month=int(2,0)&date=int(2,1)&session=int(2,1)&tid=int(10,0)&sid=int(10,0)&pid=int(10,0)"
 ```
 
-
+## tahfidz_valuation_plus
+```
+- tahfidz_valuation_plus (per semester)
+  - id (INT / KEY)
+  - name
+  - student_id (INT)
+  - teacher_id (INT)
+  - value
+  - semester
+  - year
+  - type (semester/subjective/--juz1-juz30)
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE tahfidz_valuation_plus id=aid()&name=string()&student_id=int()&teacher_id=int()&value=int(3,0)&semester=int(1,1)&year=int(4,2024)&type=string()&time=time()"
+```
 
