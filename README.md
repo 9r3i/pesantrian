@@ -133,4 +133,19 @@ call ldb query "CREATE TABLE tahfidz_valuation_plus id=aid()&name=string()&stude
 call ldb query "CREATE TABLE laundry_non id=aid()&type=string()&profile_id=int()&nominal=int()&year=int(4,2024)&month=int(2,0)&time=time()&weight=string()&kind=string()&flow=int(1,0)"
 ```
 
+## subjective_valuation
+```
+- subjective_valuation
+  - id (INT / KEY)
+  - name
+  - student_id (INT)
+  - teacher_id (INT)
+  - value
+  - semester
+  - year
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE subjective_valuation id=aid()&name=string()&student_id=int()&teacher_id=int()&value=int(3,0)&semester=int(1,1)&year=int(4,2024)&time=time()"
+```
 
