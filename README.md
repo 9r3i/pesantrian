@@ -1,7 +1,7 @@
 # pesantrian
 this readme.md file is just a note for myself, no one would know.
 
-# comfiguration
+# configuration
 dont forget to configure this global constants
 ```js
 const EVA_API_HOST     = "EVA_ACCESS_TOKEN",
@@ -77,7 +77,6 @@ export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
 
 
-
 # queries
 these queries are made for eva api 
 
@@ -148,4 +147,23 @@ call ldb query "CREATE TABLE laundry_non id=aid()&type=string()&profile_id=int()
 [QUERY]
 call ldb query "CREATE TABLE subjective_valuation id=aid()&name=string()&student_id=int()&teacher_id=int()&value=int(3,0)&semester=int(1,1)&year=int(4,2024)&time=time()"
 ```
+
+## general
+```
+- general
+  - id (INT / KEY)
+  - year (INT)
+  - month (INT)
+  - type (:budget/:report)
+  - note
+  - many (INT)
+  - price (INT)
+  - total (INT)
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE general id=aid()&year=int(4,2024)&month=int(2,0)&type=string(20)&note=string()&many=int()&price=int()&total=int()&time=time()"
+```
+
+
 
