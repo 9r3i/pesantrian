@@ -165,5 +165,26 @@ call ldb query "CREATE TABLE subjective_valuation id=aid()&name=string()&student
 call ldb query "CREATE TABLE general id=aid()&year=int(4,2024)&month=int(2,0)&type=string(20)&note=string()&many=int()&price=int()&total=int()&time=time()"
 ```
 
+## permission
+```
+- permission
+  - id (INT / KEY)
+  - name
+  - student_id (INT)
+  - date
+  - hour
+  - long (INT)
+  - type
+  - back_date
+  - back_hour
+  - note
+  - status
+  - penalty
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE permission id=aid()&name=string()&student_id=int()&date=string(10)&hour=string(5)&long=int(3)&type=string(50)&back_date=string(10)&back_hour=string(5)&note=string()&status=string()&penalty=string()&time=time()"
+```
+
 
 
