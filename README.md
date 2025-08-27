@@ -186,5 +186,21 @@ call ldb query "CREATE TABLE general id=aid()&year=int(4,2024)&month=int(2,0)&ty
 call ldb query "CREATE TABLE permission id=aid()&name=string()&student_id=int()&date=string(10)&hour=string(5)&long=int(3)&type=string(50)&back_date=string(10)&back_hour=string(5)&note=string()&status=string()&penalty=string()&time=time()"
 ```
 
+## letter
+```
+- letter
+  - id (INT / KEY)
+  - method (INT)
+  - serial
+  - about
+  - date (string:10)
+  - hour (string:5)
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE letter id=aid()&method=int(1,0)&serial=string()&about=string()&date=string(10)&hour=string(5)&time=time()"
+```
+
+
 
 
