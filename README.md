@@ -201,6 +201,20 @@ call ldb query "CREATE TABLE permission id=aid()&name=string()&student_id=int()&
 call ldb query "CREATE TABLE letter id=aid()&method=int(1,0)&serial=string()&about=string()&date=string(10)&hour=string(5)&time=time()"
 ```
 
+## 
+```
+- tahfidz_inventory
+  - id (INT / KEY)
+  - name
+  - quantity (INT)
+  - item_code
+  - condition
+  - teacher_id (INT)
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE tahfidz_inventory id=aid()&name=string()&quantity=int()&item_code=string(50)&condition=string(100)&teacher_id=int()&time=time()"
+```
 
 
 
