@@ -230,4 +230,21 @@ call ldb query "CREATE TABLE tahfidz_inventory id=aid()&name=string()&quantity=i
 call ldb query "CREATE TABLE clinic_inventory id=aid()&name=string()&quantity=int()&item_code=string(50)&condition=string(100)&time=time()"
 ```
 
+## tahfidz_presence
+```
+- tahfidz_presence
+  - id (INT / KEY)
+  - name
+  - student_id (INT)
+  - teacher_id (INT)
+  - presence
+  - note
+  - date
+  - month
+  - year
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE tahfidz_presence id=aid()&name=string()&student_id=int()&teacher_id=int()&presence=int(5)&note=string()&date=int(2,1)&month=int(2,0)&year=int(4,2024)&time=time()"
+```
 
