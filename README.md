@@ -277,4 +277,33 @@ call ldb query "CREATE TABLE academic_inventory id=aid()&name=string()&quantity=
 call ldb query "CREATE TABLE dorm_inventory id=aid()&name=string()&quantity=int()&item_code=string(50)&condition=string(100)&building=string()&time=time()"
 ```
 
+## scholarship
+```
+- scholarship
+  - id (INT / KEY)
+  - name
+  - student_id (INT)
+  - nominal (INT)
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE scholarship id=aid()&name=string()&student_id=int()&nominal=int()&time=time()"
+```
+
+## it_inventory
+```
+- it_inventory
+  - id (INT / KEY)
+  - name
+  - quantity (INT)
+  - item_code
+  - condition
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE it_inventory id=aid()&name=string()&quantity=int()&item_code=string(50)&condition=string(100)&time=time()"
+```
+
+
+
 
