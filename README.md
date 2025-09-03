@@ -304,6 +304,19 @@ call ldb query "CREATE TABLE scholarship id=aid()&name=string()&student_id=int()
 call ldb query "CREATE TABLE it_inventory id=aid()&name=string()&quantity=int()&item_code=string(50)&condition=string(100)&time=time()"
 ```
 
+## room_teacher
+```
+- room_teacher
+  - id (INT / KEY)
+  - name
+  - teacher_id (INT)
+  - class
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE room_teacher id=aid()&name=string()&teacher_id=int()&class=int(2,7)&time=time()"
+```
+
 
 
 
