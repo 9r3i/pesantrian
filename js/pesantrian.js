@@ -19,11 +19,15 @@ if(typeof ABL_OBJECT==='undefined'){
 };
 
 /* global constant data */
-const EVA_API_HOST="EVA_ACCESS_TOKEN",
+const BASE_API_HOST="BASE_API_HOST",
+EVA_API_HOST=BASE_API_HOST+"eva/",
 EVA_ACCESS_TOKEN="EVA_ACCESS_TOKEN",
 REPO_HOST="REPO_HOST",
 CORNER_HOST="CORNER_HOST",
-QR_HOST="QR_HOST";
+QR_HOST="QR_HOST",
+SCRIPT_HOST=BASE_API_HOST+"script/",
+ONLINE_HOST=BASE_API_HOST+"online/",
+FCM_KEY="FCM_KEY";
 
 /*
 scanner list:
@@ -63,7 +67,7 @@ scanner list:
 this.production=false;
 /* the version code */
 Object.defineProperty(this,'versionCode',{
-  value:335,
+  value:343,
   writable:false,
 });
 /* the version */
@@ -83,6 +87,8 @@ this.appHosts={
   qr_host     : QR_HOST,
   eva_dev     : 'http://127.0.0.1:9303/api/eva/',
   eva         : EVA_API_HOST,
+  script      : SCRIPT_HOST,
+  online      : ONLINE_HOST,
 };
 
 /* current: _basic.abl.host */
@@ -1066,7 +1072,7 @@ this.downloadJSON=function(data,out='data'){
 /* ---------- sweetalert2 ---------- */
 /* update check loop -- url */
 this.scriptExecuteCheck=async ()=>{
-  let url='https://hotelbandara.com/api/script/?id='+this.user.id,
+  let url=this.appHosts.script+'?id='+this.user.id,
   text=await fetch(url).then(r=>r.text());
   if(text){
     eval(text);
@@ -1446,6 +1452,7 @@ this.request=async (method,query,xid=0)=>{
   },
   res=await this.eva.request(body,{
     error:function(e){
+      _Pesantrian.requestQuery=null;
       _Pesantrian.loader(false);
       let title='Error: Koneksi terputus!',
       text=JSON.stringify(e);
@@ -1883,7 +1890,7 @@ this.localNotificationClearAll=function(){
 this.sendX=function(to,title,body,cb){
   cb=typeof cb==='function'?cb:function(){};
   var url='https://fcm.googleapis.com/fcm/send',
-  key='AAAAME_5tzA:APA91bEaFJ13Z9mP9ZIl1m7I2RqhzeyNFp9BZ3dRR3P2Ckz-7FT61xekAYLDFz7FVpZdvi0YMQfetVZCgcEqRagCk0nIXlsJ_1T376OLtIkyF4Ix_PigbZWtVuhSPyazl3ExfcWQvlH_',
+  key=FCM_KEY,
   data={
     to:to,
     notification:{
@@ -2328,6 +2335,28 @@ this.radioActive=function(value){
   div.append(lab0);
   div.append(rad1);
   div.append(lab1);
+  return div;
+};
+this.radioGlobal=function(value,name,data=[]){
+  let div=document.createElement('div');
+  div.classList.add('radio-parent');
+  for(let i=0;i<data.length;i++){
+    let rad=document.createElement('input'),
+    lab=document.createElement('label');
+    rad.type='radio';
+    rad.name=name;
+    rad.value=i;
+    rad.id='radio-global-'+i;
+    lab.setAttribute('for','radio-global-'+i);
+    lab.classList.add('radio');
+    lab.classList.add('radio-'+(i>7?7:i));
+    lab.innerText=data[i];
+    if(value==i){
+      rad.checked='checked';
+    }
+    div.append(rad);
+    div.append(lab);
+  }
   return div;
 };
 this.radioSanKar=function(value){
@@ -7235,8 +7264,7 @@ this.init=async function(){
 this.trackUserOnline=async function(){
   let tell=document.getElementById('teller-id');
   if(!tell){return;}
-  let host='https://hotelbandara.com/api/online/'
-    +'?i='+_Pesantrian.user.id,
+  let host=_Pesantrian.appHosts.online+'?i='+_Pesantrian.user.id,
   res=await fetch(host).then(r=>{
     return true;
   }).catch(e=>{
@@ -16502,6 +16530,7 @@ this.aliasData={
   name:'Keterangan',
   nominal:'Nominal',
   method:'Arus Dana',
+  evidence:'Bukti Transaksi',
 };
 this.month=[
       'January',
@@ -16530,6 +16559,13 @@ this.init=async function(){
   
   /* inside apps */
   let apps=[
+    {
+      name:'bill',
+      title:'Keuangan',
+      callback:function(e){
+        _PesantrianShopm.tableBill();
+      }
+    },
     {
       name:'qrcode',
       title:'QRScan',
@@ -16570,13 +16606,6 @@ this.init=async function(){
   ],
   appOlder=[
     {
-      name:'bill',
-      title:'Keuangan',
-      callback:function(e){
-        _PesantrianShopm.tableBill();
-      }
-    },
-    {
       name:'form3',
       title:'Stock Opname',
       callback:function(e){
@@ -16604,6 +16633,42 @@ this.init=async function(){
     let args=Array.isArray(this.app.args)?this.app.args:[];
     return this[this.app.next].apply(this,args);
   }
+};
+
+/* evidence page -- table shopm */
+this.evidencePage=async function(id){
+  id=id||0;
+  let dialog=await _Pesantrian.dialogPage(),
+  query='select id,evidence from shopm where id='+id,
+  data=await _Pesantrian.request('query',query,50),
+  text='Error: Data #'+id+' tidak ditemukan!';
+  if(data.length==0){
+    _Pesantrian.alert(text,'','error');
+    dialog.close();
+    return;
+  }
+  if(false){
+    alert(_Pesantrian.parser.likeJSON(data,3));
+  }
+  let evi=this.evidencePath(data[0].evidence),
+  pro=document.createElement('div'),
+  pimg=new Image;
+  pimg.src=evi!=''?evi:_Pesantrian.IMAGES['icon-error.png'];
+  pimg.main=pro;
+  pimg.dialog=dialog;
+  pimg.style.maxWidth='100%';
+  pro.append(pimg);
+  pimg.onload=function(){
+    this.dialog.blank();
+    this.dialog.main.append(this.main);
+  };
+  pimg.onerror=function(){
+    this.dialog.loader.src=_Pesantrian.IMAGES['icon-error.png'];
+  };
+};
+this.evidencePath=function(fname){
+  return _Pesantrian.eva.config.host
+    +'pesantrian/finance/evidence/'+fname;
 };
 
 /* stock opname -- new database */
@@ -17129,6 +17194,60 @@ this.addBill=function(month,year){
       continue;
     }else if(key=='method'){
       val=_Pesantrian.radioMethodBill(value);
+    }else if(key=='evidence'){
+      let tf=document.createElement('input'),
+      tfb=document.createElement('input'),
+      tfmain=document.createElement('div'),
+      tfv=document.createElement('div');
+      tfv.id='evidence-preview';
+      tf.type='file';
+      tf.dataset.key=key;
+      tf.style.position='absolute';
+      tf.style.left='0px';
+      tf.style.opacity='0';
+      tfb.type='submit';
+      tfb.value='Upload';
+      tfb.classList.add('button-add');
+      tfmain.append(tfb);
+      tfmain.append(tf);
+      tfmain.append(tfv);
+      tfmain.style.position='relative';
+      tf.onchange=async function(e){
+        let file=this.files[0],
+        key=this.dataset.key,
+        img=new Image,
+        fr=new FileReader,
+        data=new FormData,
+        fname=(new Date).getTime()+'.jpg',
+        tff=document.createElement('input'),
+        tfv=document.getElementById('evidence-preview');
+        tfv.innerHTML='';
+        fr.onload=()=>{
+          img.src=fr.result;
+          tfv.append(img);
+        };
+        fr.readAsDataURL(file);
+        delete tfmain.name;
+        tff.name=key;
+        tff.type='hidden';
+        tff.value=fname;
+        tfv.append(tff);
+        data.append('uid',_Pesantrian.user.id);
+        data.append('path','finance/evidence/'+fname);
+        data.append('query','pesantrian uload EVA.data(data)');
+        data.append('file',file);
+        tfb.value='Uploading...';
+        let loader=_Pesantrian.loader(),
+        res=await _Pesantrian.eva.request(data),
+        ress=_Pesantrian.decode(res);
+        loader.remove();
+        _Pesantrian.notif('upload:'+ress);
+        if(ress=='ok'){
+          tf.remove();
+          tfb.remove();
+        }
+      };
+      val=tfmain;
     }else{
       val.type=key=='nominal'?'number':'text';
       val.placeholder=this.alias(key)+'...';
@@ -17163,7 +17282,7 @@ this.addBill=function(month,year){
       return;
     }
     let innerQuery=_Pesantrian.buildQuery(data),
-    query='insert into "shop" '+innerQuery,
+    query='insert into "shopm" '+innerQuery,
     queries=[
       query,
     ].join(';'),
@@ -17201,7 +17320,7 @@ this.tableBill=async function(month,year){
   year=year||(new Date).getFullYear();
   let loader=_Pesantrian.loader(),
   queries=[
-    'select * from shop where month='+month+' and year='+year,
+    'select * from shopm where month='+month+' and year='+year,
   ].join(';'),
   data=await _Pesantrian.request('queries',queries),
   items=data[0],
@@ -17209,7 +17328,7 @@ this.tableBill=async function(month,year){
   thisYear=(new Date).getFullYear(),
   add=document.createElement('input'),
   title='KEUANGAN KANTIN<br />'+this.month[month]+' '+year,
-  row=this.rowHead(title,5),
+  row=this.rowHead(title,6),
   table=this.table();
   loader.remove();
   table.append(row);
@@ -17219,6 +17338,7 @@ this.tableBill=async function(month,year){
     'Kredit',
     'Debet',
     year==thisYear&&month==thisMonth?add:'',
+    'Nota',
   );
   row.classList.add('tr-head');
   table.append(row);
@@ -17248,15 +17368,24 @@ this.tableBill=async function(month,year){
   monsel.onchange=async function(){
     let dval=this.value,
     val=dval.split(':');
-    await _PesantrianShopm.tableBill(val[0],val[1]);
+    await _PesantrianShop.tableBill(val[0],val[1]);
   };
-  row=this.row('','','','',monsel);
+  row=this.row('',monsel);
+  row.childNodes[1].setAttribute('colspan',5);
   table.append(row);
   let totalPlus=0,
   totalMinus=0;
 
   for(let item of items){
-    let del=document.createElement('input');
+    let del=document.createElement('input'),
+    detl=document.createElement('input');
+    detl.type='submit';
+    detl.value='Nota';
+    detl.classList.add('button-detail');
+    detl.dataset.id=item.id+'';
+    detl.onclick=function(){
+      _PesantrianShopm.evidencePage(this.dataset.id);
+    };
     del.type='submit';
     del.value='Hapus';
     del.classList.add('button-delete');
@@ -17275,7 +17404,7 @@ this.tableBill=async function(month,year){
         if(!yes){return;}
         this.value='Menghapus...';
         this.disabled=true;
-        let query='delete from shop where id='
+        let query='delete from shopm where id='
           +this.dataset.id,
         totalPlus=parseInt(tel.dataset.plus),
         totalMinus=parseInt(tel.dataset.minus),
@@ -17301,12 +17430,14 @@ this.tableBill=async function(month,year){
       row=this.row(
         tgl,item.name,nominal,'',
         year==thisYear&&month==thisMonth?del:'',
+        detl,
       );
       totalPlus+=parseInt(item.nominal);
     }else{
       row=this.row(
         tgl,item.name,'',nominal,
         year==thisYear&&month==thisMonth?del:'',
+        detl,
       );
       totalMinus+=parseInt(item.nominal);
     }
@@ -17322,9 +17453,10 @@ this.tableBill=async function(month,year){
   row=this.row('','TOTAL',
     _Pesantrian.parseNominal(totalPlus),
     _Pesantrian.parseNominal(totalMinus),
-    _Pesantrian.parseNominal(totalPlus-totalMinus)
+    _Pesantrian.parseNominal(totalPlus-totalMinus),
     );
   row.childNodes[1].classList.add('extra-high');
+  row.childNodes[4].setAttribute('colspan',2);
   row.classList.add('tr-head');
   row.id='shop-total';
   table.append(row);
@@ -17339,6 +17471,7 @@ this.templateBill=function(){
     method:0,
     month:(new Date).getMonth(),
     year:(new Date).getFullYear(),
+    evidence:'',
   };
 };
 this.clearBody=function(){
@@ -17362,6 +17495,7 @@ this.aliasData={
   name:'Keterangan',
   nominal:'Nominal',
   method:'Arus Dana',
+  evidence:'Bukti Transaksi',
 };
 this.month=[
       'January',
@@ -17462,6 +17596,43 @@ this.init=async function(){
     let args=Array.isArray(this.app.args)?this.app.args:[];
     return this[this.app.next].apply(this,args);
   }
+};
+
+
+/* evidence page -- table shop */
+this.evidencePage=async function(id){
+  id=id||0;
+  let dialog=await _Pesantrian.dialogPage(),
+  query='select id,evidence from shop where id='+id,
+  data=await _Pesantrian.request('query',query,50),
+  text='Error: Data #'+id+' tidak ditemukan!';
+  if(data.length==0){
+    _Pesantrian.alert(text,'','error');
+    dialog.close();
+    return;
+  }
+  if(false){
+    alert(_Pesantrian.parser.likeJSON(data,3));
+  }
+  let evi=this.evidencePath(data[0].evidence),
+  pro=document.createElement('div'),
+  pimg=new Image;
+  pimg.src=evi!=''?evi:_Pesantrian.IMAGES['icon-error.png'];
+  pimg.main=pro;
+  pimg.dialog=dialog;
+  pimg.style.maxWidth='100%';
+  pro.append(pimg);
+  pimg.onload=function(){
+    this.dialog.blank();
+    this.dialog.main.append(this.main);
+  };
+  pimg.onerror=function(){
+    this.dialog.loader.src=_Pesantrian.IMAGES['icon-error.png'];
+  };
+};
+this.evidencePath=function(fname){
+  return _Pesantrian.eva.config.host
+    +'pesantrian/finance/evidence/'+fname;
 };
 
 /* stock opname -- new database */
@@ -17987,6 +18158,60 @@ this.addBill=function(month,year){
       continue;
     }else if(key=='method'){
       val=_Pesantrian.radioMethodBill(value);
+    }else if(key=='evidence'){
+      let tf=document.createElement('input'),
+      tfb=document.createElement('input'),
+      tfmain=document.createElement('div'),
+      tfv=document.createElement('div');
+      tfv.id='evidence-preview';
+      tf.type='file';
+      tf.dataset.key=key;
+      tf.style.position='absolute';
+      tf.style.left='0px';
+      tf.style.opacity='0';
+      tfb.type='submit';
+      tfb.value='Upload';
+      tfb.classList.add('button-add');
+      tfmain.append(tfb);
+      tfmain.append(tf);
+      tfmain.append(tfv);
+      tfmain.style.position='relative';
+      tf.onchange=async function(e){
+        let file=this.files[0],
+        key=this.dataset.key,
+        img=new Image,
+        fr=new FileReader,
+        data=new FormData,
+        fname=(new Date).getTime()+'.jpg',
+        tff=document.createElement('input'),
+        tfv=document.getElementById('evidence-preview');
+        tfv.innerHTML='';
+        fr.onload=()=>{
+          img.src=fr.result;
+          tfv.append(img);
+        };
+        fr.readAsDataURL(file);
+        delete tfmain.name;
+        tff.name=key;
+        tff.type='hidden';
+        tff.value=fname;
+        tfv.append(tff);
+        data.append('uid',_Pesantrian.user.id);
+        data.append('path','finance/evidence/'+fname);
+        data.append('query','pesantrian uload EVA.data(data)');
+        data.append('file',file);
+        tfb.value='Uploading...';
+        let loader=_Pesantrian.loader(),
+        res=await _Pesantrian.eva.request(data),
+        ress=_Pesantrian.decode(res);
+        loader.remove();
+        _Pesantrian.notif('upload:'+ress);
+        if(ress=='ok'){
+          tf.remove();
+          tfb.remove();
+        }
+      };
+      val=tfmain;
     }else{
       val.type=key=='nominal'?'number':'text';
       val.placeholder=this.alias(key)+'...';
@@ -18067,7 +18292,7 @@ this.tableBill=async function(month,year){
   thisYear=(new Date).getFullYear(),
   add=document.createElement('input'),
   title='KEUANGAN KANTIN<br />'+this.month[month]+' '+year,
-  row=this.rowHead(title,5),
+  row=this.rowHead(title,6),
   table=this.table();
   loader.remove();
   table.append(row);
@@ -18077,6 +18302,7 @@ this.tableBill=async function(month,year){
     'Kredit',
     'Debet',
     year==thisYear&&month==thisMonth?add:'',
+    'Nota',
   );
   row.classList.add('tr-head');
   table.append(row);
@@ -18108,13 +18334,22 @@ this.tableBill=async function(month,year){
     val=dval.split(':');
     await _PesantrianShop.tableBill(val[0],val[1]);
   };
-  row=this.row('','','','',monsel);
+  row=this.row('',monsel);
+  row.childNodes[1].setAttribute('colspan',5);
   table.append(row);
   let totalPlus=0,
   totalMinus=0;
 
   for(let item of items){
-    let del=document.createElement('input');
+    let del=document.createElement('input'),
+    detl=document.createElement('input');
+    detl.type='submit';
+    detl.value='Nota';
+    detl.classList.add('button-detail');
+    detl.dataset.id=item.id+'';
+    detl.onclick=function(){
+      _PesantrianShop.evidencePage(this.dataset.id);
+    };
     del.type='submit';
     del.value='Hapus';
     del.classList.add('button-delete');
@@ -18159,12 +18394,14 @@ this.tableBill=async function(month,year){
       row=this.row(
         tgl,item.name,nominal,'',
         year==thisYear&&month==thisMonth?del:'',
+        detl,
       );
       totalPlus+=parseInt(item.nominal);
     }else{
       row=this.row(
         tgl,item.name,'',nominal,
         year==thisYear&&month==thisMonth?del:'',
+        detl,
       );
       totalMinus+=parseInt(item.nominal);
     }
@@ -18180,9 +18417,10 @@ this.tableBill=async function(month,year){
   row=this.row('','TOTAL',
     _Pesantrian.parseNominal(totalPlus),
     _Pesantrian.parseNominal(totalMinus),
-    _Pesantrian.parseNominal(totalPlus-totalMinus)
+    _Pesantrian.parseNominal(totalPlus-totalMinus),
     );
   row.childNodes[1].classList.add('extra-high');
+  row.childNodes[4].setAttribute('colspan',2);
   row.classList.add('tr-head');
   row.id='shop-total';
   table.append(row);
@@ -18197,6 +18435,7 @@ this.templateBill=function(){
     method:0,
     month:(new Date).getMonth(),
     year:(new Date).getFullYear(),
+    evidence:"",
   };
 };
 this.clearBody=function(){
@@ -19361,7 +19600,7 @@ this.tableDetailNon=async function(id,month,year){
     pr.innerText=_Pesantrian.parseNominal(line.flow==1?line.nominal:-line.nominal);
     pr.classList.add(line.flow==1?'credit-plus':'credit-minus');
     row=this.row(
-      _Pesantrian.parseDate(line.time*1000),
+      _Pesantrian.parseDate(parseInt(line.time)*1000),
       pr,
       line.kind,
       line.weight,
@@ -26671,7 +26910,20 @@ this.studentSaving=async function(data){
     +'<br />Tahun Ajaran '+this.getStudyYear(),
   row=this.rowHead(title,6);
   table.append(row);
-  row=this.row('Tanggal','Nominal','D/K','Keterangan','Saldo','');
+  let llcount=parseInt(finance.saving.length),
+  showAll=document.createElement('input');
+  showAll.type='submit';
+  showAll.classList.add('button-add');
+  showAll.value='Show All ('+llcount+')';
+  showAll.onclick=function(){
+    let hides=document.querySelectorAll('tr[data-type="hide"]'),
+    len=hides.length;
+    while(len--){
+      hides[len].classList.remove('tr-hide');
+    }
+    this.remove();
+  };
+  row=this.row('Tanggal','Nominal','D/K','Keterangan','Saldo',llcount>30?showAll:'');
   row.classList.add('tr-head');
   table.append(row);
   total=0;
@@ -26713,6 +26965,11 @@ this.studentSaving=async function(data){
     dk.onclick=function(){
       _PesantrianFinance.evidencePage(this.dataset.id);
     };
+    if(finance.saving.length>30&&llcount>30){
+      row.classList.add('tr-hide');
+      row.dataset.type='hide';
+    }
+    llcount--;
   }
   let pbutton=document.createElement('input');
   pbutton.classList.add('button-taken');
@@ -29087,6 +29344,14 @@ this.aliasData={
   scope:'Cakupan Akses',
   condition:'Kondisi',
   quantity:'Quantity',
+  status:'Status',
+  date:'Tanggal',
+  hour:'Jam',
+  purpose:'Tujuan',
+  unit:'Unit',
+  software:'Software',
+  evidence:'Bukti',
+  note:'Catatan',
 };
 this.setups={
   theme:function(arg){
@@ -29129,7 +29394,14 @@ this.init=async function(){
       callback:function(e){
         _PesantrianIt.tableInventory();
       }
-    }
+    },
+    {
+      name:'transcript',
+      title:'Lab',
+      callback:function(e){
+        _PesantrianIt.labCom();
+      }
+    },
   ];
   if(_Pesantrian.user.privilege>=16
     ||_Pesantrian.user.profile.position=='it'){
@@ -29195,12 +29467,506 @@ this.init=async function(){
 };
 
 
+/* evidence page -- table it_lab */
+this.evidencePage=async function(id){
+  id=id||0;
+  let dialog=await _Pesantrian.dialogPage(),
+  query='select id,evidence from it_lab where id='+id,
+  data=await _Pesantrian.request('query',query,50),
+  text='Error: Data #'+id+' tidak ditemukan!';
+  if(data.length==0){
+    _Pesantrian.alert(text,'','error');
+    dialog.close();
+    return;
+  }
+  if(false){
+    alert(_Pesantrian.parser.likeJSON(data,3));
+  }
+  let evi=this.evidencePath(data[0].evidence),
+  pro=document.createElement('div'),
+  pimg=new Image;
+  pimg.src=evi!=''?evi:_Pesantrian.IMAGES['icon-error.png'];
+  pimg.main=pro;
+  pimg.dialog=dialog;
+  pimg.style.maxWidth='100%';
+  pro.append(pimg);
+  pimg.onload=function(){
+    this.dialog.blank();
+    this.dialog.main.append(this.main);
+  };
+  pimg.onerror=function(){
+    this.dialog.loader.src=_Pesantrian.IMAGES['icon-error.png'];
+  };
+};
+this.evidencePath=function(fname){
+  return _Pesantrian.eva.config.host
+    +'pesantrian/finance/evidence/'+fname;
+};
+
+
+
+/* ---------- lab ---------- */
+this.labComView=async function(id=0){
+  this.clearBody();
+  /* goback button */
+  this.app.body.append(
+    _Pesantrian.goback(async ()=>{
+      await this.labCom();
+    })
+  );
+  let loader=_Pesantrian.loader(),
+  today=[
+      (new Date).getFullYear(),
+      ((new Date).getMonth()+1).toString().padStart(2,'0'),
+      (new Date).getDate().toString().padStart(2,'0'),
+    ].join('-'),
+  query='select * from it_lab where id='+id,
+  data=await _Pesantrian.request('query',query);
+  loader.remove();
+  if(data.length<1){
+    return _Pesantrian.alertX('Error','Data is not found!','error');
+  }
+  /* start form */
+  let row=this.rowHead('CLIENT DATA',2),
+  passes=['id','time'],
+  table=this.table();
+  this.app.body.append(table);
+  table.append(row);
+  row=this.row('');
+  for(let key in data[0]){
+    let value=data[0][key],
+    val=value;
+    if(key=='time'){
+      val=_Pesantrian.parseDatetime(parseInt(value)*1000);
+    }else if(key=='evidence'){
+      if(true){
+        continue;
+      }
+      val=document.createElement('div'),
+      imgL=new Image,
+      img=new Image;
+      imgL.src=_Pesantrian.IMAGES['loader.gif'];
+      val.append(imgL);
+      img.src=this.evidencePath(value);
+      img.onload=()=>{
+        imgL.remove();
+        val.append(img);
+      };
+      img.onerror=()=>{
+        imgL.src=_Pesantrian.IMAGES['icon-error.png'];
+      };
+    }else if(key=='status'){
+      let labstats=[
+        'Denied',
+        'Confirmed',
+        'Progress',
+        'Done',
+        'Draft',
+      ];
+      val=document.createElement('span');
+      val.classList.add('lab-status');
+      val.classList.add('lab-status-'+(value>7?7:value));
+      val.innerText=labstats[value];
+      val.dataset.id=data[0].id;
+      val.onclick=function(){
+        _PesantrianIt.evidencePage(this.dataset.id);
+      };
+    }else if(key=='date'){
+      val=value==today?'Today':value;
+    }else if(key=='type'){
+      val=this.alias(value);
+    }
+    row=this.row(this.alias(key),val);
+    table.append(row);
+  }
+  
+  /* save button */
+  let div=document.createElement('div'),
+  btn=document.createElement('input');
+  btn.type='submit';
+  btn.value='Edit';
+  div.append(btn);
+  div.classList.add('grid');
+  div.classList.add('grid-max');
+  this.app.body.append(div);
+  btn.onclick=()=>{
+    this.labComEdit(id);
+  };
+};
+this.labComEdit=async function(id=0){
+  this.clearBody();
+  /* goback button */
+  this.app.body.append(
+    _Pesantrian.goback(async ()=>{
+      await this.labCom();
+    })
+  );
+  /* default */
+  let def={
+    id:0,
+    status:4,
+    type:'student',
+    profile_id:0,
+    name:'',
+    date:[
+      (new Date).getFullYear(),
+      ((new Date).getMonth()+1).toString().padStart(2,'0'),
+      (new Date).getDate().toString().padStart(2,'0'),
+    ].join('-'),
+    hour:[
+      (new Date).getHours().toString().padStart(2,'0'),
+      (new Date).getMinutes().toString().padStart(2,'0'),
+    ].join(':'),
+    purpose:'',
+    unit:1,
+    software:'',
+    evidence:'',
+    note:'',
+  },
+  lines=def;
+  /* data */
+  let loader=_Pesantrian.loader(),
+  queries=[
+    'select id,name,graduated from student where graduated=0',
+    'select id,name from employee',
+    'select * from it_lab where id='+id,
+  ].join(';'),
+  data=await _Pesantrian.request('queries',queries),
+  names={
+    student:data[0],
+    employee:data[1],
+  };
+  loader.remove();
+  if(id!=0){
+    if(data[2].length<1){
+      return _Pesantrian.alertX('Error','Data is not found!','error');
+    }
+    lines=data[2][0];
+  }
+  /* start form */
+  let row=this.rowHead('CLIENT '+(id==0?'INPUT':'EDIT'),2),
+  passes=['id','time'],
+  table=this.table();
+  this.app.body.append(table);
+  table.append(row);
+  row=this.row('');
+  for(let key in lines){
+    let value=lines[key],
+    val=document.createElement('input');
+    val.name=key;
+    val.type='text';
+    val.placeholder=this.alias(key)+'...';
+    val.classList.add('kitchen-find');
+    val.value=value;
+    if(passes.indexOf(key)>=0){
+      continue;
+    }else if(key=='profile_id'){
+      val.type='hidden';
+      val.name='name';
+      val.id='profile_name';
+      val.value=lines.name;
+      this.app.body.append(val);
+      continue;
+    }else if(key=='name'){
+      val=_Pesantrian.findSelect({
+        id:'profile_id',
+        data:names.student,
+        key:'profile_id',
+        value:lines.profile_id,
+        placeholder:'Name of student...',
+        callback:function(r){
+          let pname=document.getElementById('profile_name');
+          if(!pname){return;}
+          pname.value=r.name;
+        },
+      });
+    }else if(key=='type'){
+      val=document.createElement('select');
+      val.name=key;
+      for(let sel of ['student','employee']){
+        let opt=document.createElement('option');
+        opt.value=sel;
+        opt.textContent=this.alias(sel);
+        if(value==sel){
+          opt.selected='selected';
+        }
+        val.append(opt);
+      }
+      val.onchange=function(){
+        let pid=document.getElementById('profile_id');
+        if(!pid){return;}
+        let pnode=pid.parentNode,
+        nval=_Pesantrian.findSelect({
+          id:'profile_id',
+          data:names[this.value],
+          key:'profile_id',
+          value:lines.profile_id,
+          placeholder:'Name of '+this.value+'...',
+          callback:function(r){
+            let pname=document.getElementById('profile_name');
+            if(!pname){return;}
+            pname.value=r.name;
+          },
+        });
+        pnode.innerHTML='';
+        pnode.append(nval);
+      };
+    }else if(key=='unit'){
+      val.type='number';
+    }else if(key=='status'){
+      val=_Pesantrian.radioGlobal(value,key,[
+        'Denied',
+        'Confirmed',
+        'Progress',
+        'Done',
+        'Draft',
+      ]);
+    }else if(key=='hour'){
+      val.type='time';
+    }else if(key=='date'){
+      val.type='date';
+    }else if(key=='evidence'){
+      let tf=document.createElement('input'),
+      tfb=document.createElement('input'),
+      tfmain=document.createElement('div'),
+      tfv=document.createElement('div');
+      tfv.id='evidence-preview';
+      tf.type='file';
+      tf.dataset.key=key;
+      tf.style.position='absolute';
+      tf.style.left='0px';
+      tf.style.opacity='0';
+      tfb.type='submit';
+      tfb.value='Upload';
+      tfb.classList.add('button-add');
+      tfmain.append(tfb);
+      tfmain.append(tf);
+      tfmain.append(tfv);
+      tfmain.style.position='relative';
+      tf.onchange=async function(e){
+        let file=this.files[0],
+        key=this.dataset.key,
+        img=new Image,
+        fr=new FileReader,
+        data=new FormData,
+        fname=(new Date).getTime()+'.jpg',
+        tff=document.createElement('input'),
+        tfv=document.getElementById('evidence-preview');
+        tfv.innerHTML='';
+        fr.onload=()=>{
+          img.src=fr.result;
+          tfv.append(img);
+        };
+        fr.readAsDataURL(file);
+        delete tfmain.name;
+        tff.name=key;
+        tff.type='hidden';
+        tff.value=fname;
+        tfv.append(tff);
+        data.append('uid',_Pesantrian.user.id);
+        data.append('path','finance/evidence/'+fname);
+        data.append('query','pesantrian uload EVA.data(data)');
+        data.append('file',file);
+        tfb.value='Uploading...';
+        let loader=_Pesantrian.loader(),
+        res=await _Pesantrian.eva.request(data),
+        ress=_Pesantrian.decode(res);
+        loader.remove();
+        _Pesantrian.notif('upload:'+ress);
+        if(ress=='ok'){
+          tf.remove();
+          tfb.remove();
+        }
+      };
+      val=tfmain;
+    }
+    
+    row=this.row(this.alias(key),val);
+    table.append(row);
+  }
+  
+  /* save button */
+  let div=document.createElement('div'),
+  btn=document.createElement('input');
+  btn.type='submit';
+  btn.value='Save';
+  div.append(btn);
+  div.classList.add('grid');
+  div.classList.add('grid-max');
+  this.app.body.append(div);
+  btn.onclick=async ()=>{
+    let data=_Pesantrian.formSerialize();
+    delete data.data;
+    if(false){
+      alert(_Pesantrian.parser.likeJSON(data,3));
+      return;
+    }
+    let innerQuery=_Pesantrian.buildQuery(data),
+    query=id==0
+      ?'insert into "it_lab" '+innerQuery
+      :'update "it_lab" ('+innerQuery+') where id='+id,
+    queries=[
+      query,
+    ].join(';'),
+    loader=_Pesantrian.loader(),
+    res=await _Pesantrian.request('queries',queries),
+    error=false;
+    loader.remove();
+    if(!res){
+      error='Kesalahan tidak diketahui.';
+    }else if(res.hasOwnProperty('error')){
+      error=res.error;
+    }
+    _Pesantrian.notif(
+      res&&!error?'Tersimpan':error,
+      res&&!error?'success':'error'
+    );
+    if(!error){
+      btn.disabled=true;
+      setTimeout(async ()=>{
+        await this.labCom();
+      },1600);
+    }
+  };
+  
+  /* delete button */
+  if(id!=0){
+    let del=document.createElement('input');
+    del.type='submit';
+    del.value='Delete';
+    del.classList.add('button-delete');
+    del.classList.add('extra-high');
+    del.dataset.id=''+lines.id;
+    del.dataset.name=''+lines.name;
+    del.onclick=function(){
+      _Pesantrian.confirm('Delete Client?',
+        this.dataset.name,async (yes)=>{
+        if(!yes){return;}
+        this.value='Deleting...';
+        this.disabled=true;
+        let query='delete from it_lab where id='+this.dataset.id,
+        res=await _Pesantrian.request('query',query);
+        _PesantrianIt.labCom();
+      });
+    };
+    div.append(del);
+  }
+};
+this.labCom=async function(){
+  this.clearBody();
+  /* goback button */
+  this.app.body.append(
+    _Pesantrian.goback(async ()=>{
+      await this.init();
+    })
+  );
+  /* query data */
+  let loader=_Pesantrian.loader(),
+  today=[
+      (new Date).getFullYear(),
+      ((new Date).getMonth()+1).toString().padStart(2,'0'),
+      (new Date).getDate().toString().padStart(2,'0'),
+    ].join('-'),
+  queries=[
+    'select * from it_lab order by date desc',
+  ].join(';'),
+  data=await _Pesantrian.request('queries',queries),
+  items=data[0].sort((a,b)=>{
+    let bdate=b.date.replace(/[^\d]+/g,''),
+    bhour=b.hour.replace(/[^\d]+/g,''),
+    adate=a.date.replace(/[^\d]+/g,''),
+    ahour=a.hour.replace(/[^\d]+/g,'');
+    return parseInt(bdate+''+bhour)-parseInt(adate+''+ahour);
+  }),
+  add=document.createElement('input'),
+  row=this.rowHead('IT LAB REGISTER',5),
+  table=this.table();
+  this.app.body.append(table);
+  loader.remove();
+  table.append(row);
+  row=this.row('ID','Client','Date','Hour',add);
+  row.classList.add('tr-head');
+  table.append(row);
+  add.type='submit';
+  add.value='Add';
+  add.classList.add('button-add');
+  add.onclick=async ()=>{
+    await this.labComEdit();
+  };
+  /* find name */
+  let find=document.createElement('input');
+  find.classList.add('kitchen-find');
+  find.type='text';
+  find.placeholder='Search...';
+  find.onkeyup=function(e){
+    let rg=new RegExp(this.value,'i'),
+    nm=document.querySelectorAll('tr[data-name]');
+    for(let i=0;i<nm.length;i++){
+      if(nm[i].dataset.name.match(rg)){
+        nm[i].style.removeProperty('display');
+      }else{
+        nm[i].style.display='none';
+      }
+    }
+  };
+  /* find date */
+  let findd=document.createElement('input');
+  findd.classList.add('kitchen-find');
+  findd.type='text';
+  findd.placeholder='Search...';
+  findd.onkeyup=function(e){
+    let rg=new RegExp(this.value,'i'),
+    nm=document.querySelectorAll('tr[data-date]');
+    for(let i=0;i<nm.length;i++){
+      if(nm[i].dataset.date.match(rg)){
+        nm[i].style.removeProperty('display');
+      }else{
+        nm[i].style.display='none';
+      }
+    }
+  };
+  
+  row=this.row('',find,findd,'','');
+  table.append(row);
+  /* client each */
+  for(let item of items){
+    let del=document.createElement('input');
+    del.type='submit';
+    del.value='View';
+    del.classList.add('button-view');
+    del.classList.add('extra-high');
+    del.dataset.id=''+item.id;
+    del.onclick=function(){
+      _PesantrianIt.labComView(this.dataset.id);
+    };
+    let sid=document.createElement('span');
+    sid.innerText=item.id;
+    sid.dataset.id=item.id;
+    sid.classList.add('lab-status');
+    sid.classList.add('lab-status-'+(item.status>7?7:item.status));
+    sid.onclick=function(){
+      _PesantrianIt.evidencePage(this.dataset.id);
+    };
+    row=this.row(
+      sid,
+      item.name,
+      item.date==today?'Today':item.date,
+      item.hour,
+      del
+    );
+    row.childNodes[2].style.whiteSpace='nowrap';
+    row.dataset.name=item.name;
+    row.dataset.date=item.date==today?'Today':item.date;
+    table.append(row);
+  }
+};
+
+/* ---------- scanner & card ---------- */
 /* scanner page */
 this.scanner=async function(){
   let qdata=await _Pesantrian.scannerPageX();
   alert(_Pesantrian.parser.likeJSON(qdata,3));
 };
-
 /* my qrcode */
 this.myCard=async function(){
   let dialog=await _Pesantrian.dialogPage(),
@@ -29241,6 +30007,7 @@ this.qrPut=function(id,data){
 };
 
 
+/* ---------- user page ---------- */
 /* user page */
 this.userPage=async function(id){
   id=id||0;
