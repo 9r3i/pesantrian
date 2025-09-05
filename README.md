@@ -317,6 +317,35 @@ call ldb query "CREATE TABLE it_inventory id=aid()&name=string()&quantity=int()&
 call ldb query "CREATE TABLE room_teacher id=aid()&name=string()&teacher_id=int()&class=int(2,7)&time=time()"
 ```
 
+## presence
+```
+- presence
+  - id (INT / KEY)
+  - name
+  - student_id (INT)
+  - class (INT)
+  - presence
+  - note
+  - date
+  - month
+  - year
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE presence id=aid()&name=string()&student_id=int()&class=int(2)&presence=int(5)&note=string()&date=int(2,1)&month=int(2,0)&year=int(4,2024)&time=time()"
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
