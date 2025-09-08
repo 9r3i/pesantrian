@@ -368,6 +368,25 @@ call ldb query "CREATE TABLE class_inventory id=aid()&name=string()&quantity=int
 call ldb query "CREATE TABLE extracurricular id=aid()&name=string()&student_id=int()&class=int(2)&ex_name=string()&value=int(5)&presence=int(5)&month=int(2,0)&year=int(4,2024)&time=time()"
 ```
 
+## event
+```
+- event
+  - id (INT / KEY)
+  - name
+  - student_id (INT)
+  - class (INT)
+  - event_name
+  - event_org
+  - date
+  - note
+  - month
+  - year
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE event id=aid()&name=string()&student_id=int()&class=int()&event_name=string()&event_org=string()&date=string(20)&note=string(200)&month=int(2,0)&year=int(4,2024)&time=time()"
+```
+
 
 
 
