@@ -387,6 +387,23 @@ call ldb query "CREATE TABLE extracurricular id=aid()&name=string()&student_id=i
 call ldb query "CREATE TABLE event id=aid()&name=string()&student_id=int()&class=int()&event_name=string()&event_org=string()&date=string(20)&note=string(200)&month=int(2,0)&year=int(4,2024)&time=time()"
 ```
 
+## shop
+```
+- shop
+  - id (INT / KEY)
+  - name
+  - nominal (INT)
+  - method (INT)
+  - month (INT)
+  - year (INT)
+  - time (TIME)
+  - evidence (string)
+  
+[QUERY]
+CREATE TABLE shop id=aid()&name=string()&nominal=int()&method=int(1,0)&month=int(2,0)&year=int(4,2024)&time=time()&evidence=string()
+```
+
+
 
 
 
