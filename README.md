@@ -403,7 +403,21 @@ call ldb query "CREATE TABLE event id=aid()&name=string()&student_id=int()&class
 CREATE TABLE shop id=aid()&name=string()&nominal=int()&method=int(1,0)&month=int(2,0)&year=int(4,2024)&time=time()&evidence=string()
 ```
 
-
+## shopm
+```
+- shopm
+  - id (INT / KEY)
+  - name
+  - nominal (INT)
+  - method (INT)
+  - month (INT)
+  - year (INT)
+  - time (TIME)
+  - evidence (string)
+  
+[QUERY]
+CREATE TABLE shopm id=aid()&name=string()&nominal=int()&method=int(1,0)&month=int(2,0)&year=int(4,2024)&time=time()&evidence=string()
+```
 
 
 
