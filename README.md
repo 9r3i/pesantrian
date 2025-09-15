@@ -433,6 +433,19 @@ CREATE TABLE shopm id=aid()&name=string()&nominal=int()&method=int(1,0)&month=in
 call ldb query "CREATE TABLE clean_inventory id=aid()&name=string()&quantity=int()&item_code=string(50)&condition=string(100)&time=time()"
 ```
 
+## maintenance_inventory
+```
+- maintenance_inventory
+  - id (INT / KEY)
+  - name
+  - quantity (INT)
+  - item_code
+  - condition
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE maintenance_inventory id=aid()&name=string()&quantity=int()&item_code=string(50)&condition=string(100)&time=time()"
+```
 
 
 
