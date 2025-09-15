@@ -447,7 +447,19 @@ call ldb query "CREATE TABLE clean_inventory id=aid()&name=string()&quantity=int
 call ldb query "CREATE TABLE maintenance_inventory id=aid()&name=string()&quantity=int()&item_code=string(50)&condition=string(100)&time=time()"
 ```
 
-
+## media_inventory
+```
+- media_inventory
+  - id (INT / KEY)
+  - name
+  - quantity (INT)
+  - item_code
+  - condition
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE media_inventory id=aid()&name=string()&quantity=int()&item_code=string(50)&condition=string(100)&time=time()"
+```
 
 
 
