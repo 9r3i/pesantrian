@@ -474,6 +474,32 @@ call ldb query "CREATE TABLE media_inventory id=aid()&name=string()&quantity=int
 call ldb query "CREATE TABLE class id=aid()&name=string()&student_id=int()&class=int()&time=time()"
 ```
 
+## dorm_value
+```
+- dorm_value
+  - id (INT / KEY)
+  - name
+  - student_id (INT)
+  - teacher_id (INT)
+  - year (INT)
+  - month (INT)
+  - data (JSON)
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE dorm_value id=aid()&name=string()&student_id=int()&teacher_id=int()&year=int(4,2024)&month=int(2,0)&data=string(30000,LDB_BLANK)&time=time()"
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
