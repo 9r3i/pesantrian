@@ -490,6 +490,22 @@ call ldb query "CREATE TABLE class id=aid()&name=string()&student_id=int()&class
 call ldb query "CREATE TABLE dorm_value id=aid()&name=string()&student_id=int()&teacher_id=int()&year=int(4,2024)&month=int(2,0)&data=string(30000,LDB_BLANK)&time=time()"
 ```
 
+## dowm
+```
+- dorm
+  - id (INT / KEY)
+  - name
+  - student_id (INT)
+  - teacher_id (INT)
+  - room_name
+  - building_name
+  - rest_room
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE dorm id=aid()&name=string()&student_id=int()&teacher_id=int()&room_name=string()&building_name=string()&rest_room=string()&time=time()"
+```
+
 
 
 
