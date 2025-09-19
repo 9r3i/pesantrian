@@ -506,6 +506,19 @@ call ldb query "CREATE TABLE dorm_value id=aid()&name=string()&student_id=int()&
 call ldb query "CREATE TABLE dorm id=aid()&name=string()&student_id=int()&teacher_id=int()&room_name=string()&building_name=string()&rest_room=string()&time=time()"
 ```
 
+## tahfidz_team
+```
+- tahfidz_team
+  - id (INT / KEY)
+  - name
+  - student_id (INT)
+  - teacher_id (INT)
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE tahfidz_team id=aid()&name=string()&student_id=int()&teacher_id=int()&time=time()"
+```
+
 
 
 
