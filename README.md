@@ -539,6 +539,25 @@ call ldb query "CREATE TABLE tahfidz_team id=aid()&name=string()&student_id=int(
 call ldb query "CREATE TABLE tahfidz id=aid()&student_id=int()&teacher_id=int()&juz_total=int()&memorize_total=int()&memorize_target=int()&tajwid=int()&tahsin=int()&note=string(200)&month=int(2,0)&year=int(4,2024)&time=time()"
 ```
 
+## package
+```
+- package
+  - id (INT / KEY)
+  - name
+  - type
+  - profile_id (INT)
+  - hour
+  - courier
+  - report
+  - month (INT)
+  - year (INT)
+  - given (INT)
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE package id=aid()&name=string()&type=string()&profile_id=int()&hour=string(10)&courier=string(20)&report=string(512)&month=int(2,0)&year=int(4,2024)&given=int(1,0)&time=time()"
+```
+
 
 
 
