@@ -576,6 +576,23 @@ call ldb query "CREATE TABLE package id=aid()&name=string()&type=string()&profil
 call ldb query "CREATE TABLE guest id=aid()&name=string()&month=int(2,0)&year=int(4,2024)&student_id=int()&purpose=string(512)&checkin=string()&checkout=string()&plate=string(12)&time=time()"
 ```
 
+## laundry
+```
+- laundry
+  - id (INT / KEY)
+  - type (student,employee)
+  - profile_id (INT)
+  - nominal (INT)
+  - year (INT)
+  - month (INT)
+  - time (TIME)
+  - weight (string)
+  - kind (string)
+  - flow (INT)
+  
+[QUERY]
+call ldb query "CREATE TABLE laundry id=aid()&type=string()&profile_id=int()&nominal=int()&year=int(4,2024)&month=int(2,0)&time=time()&weight=string()&kind=string()&flow=int(1,0)"
+```
 
 
 
