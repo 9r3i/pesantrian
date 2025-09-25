@@ -594,6 +594,33 @@ call ldb query "CREATE TABLE guest id=aid()&name=string()&month=int(2,0)&year=in
 call ldb query "CREATE TABLE laundry id=aid()&type=string()&profile_id=int()&nominal=int()&year=int(4,2024)&month=int(2,0)&time=time()&weight=string()&kind=string()&flow=int(1,0)"
 ```
 
+## kitchen
+```
+- kitchen
+  - id (INT / KEY)
+  - name  -- (breakfast/lunch/dinner)
+  - student_id (INT)
+  - father_id (INT)
+  - mother_id (INT)
+  - done (INT,1,0)
+  - uid (INT)
+  - employee_id (INT)
+  - time (TIME)
+
+[QUERY]
+call ldb query "CREATE TABLE kitchen id=aid()&name=string()&student_id=int()&father_id=int()&mother_id=int()&done=int()&uid=int()&employee_id=int()&time=time()"
+
+select id,name,father_id,mother_id,graduated from student where graduated=0;
+select id,profile_id,type from user where type="parent"
+```
+
+
+
+
+
+
+
+
 
 
 
