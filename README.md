@@ -614,6 +614,21 @@ select id,name,father_id,mother_id,graduated from student where graduated=0;
 select id,profile_id,type from user where type="parent"
 ```
 
+## notification
+```
+- notification
+  - id (INT / KEY)
+  - user_id (INT) (target_id)
+  - message string(512)
+  - read (INT:1,0)
+  - callback
+  - uid (INT) (initiator)
+  - time (TIME)
+
+[QUERY]
+call ldb query "CREATE TABLE notification id=aid()&user_id=int()&message=string(512)&read=int(1,0)&callback=string()&uid=int()&time=time()"
+```
+
 
 
 
