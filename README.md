@@ -629,6 +629,29 @@ select id,profile_id,type from user where type="parent"
 call ldb query "CREATE TABLE notification id=aid()&user_id=int()&message=string(512)&read=int(1,0)&callback=string()&uid=int()&time=time()"
 ```
 
+## transaction
+```
+- transaction
+  - id          (INT / KEY)
+  - name        (register/contribution/donation/petty_cash)
+  - type        (student/parent/employee)
+  - profile_id  (INT)
+  - method      (INT) (0=out|1=in)
+  - nominal     (INT:15)
+  - transaction_date 
+  - transaction_code 
+  - status      -- status 
+  - report      -- laporan
+  - evidence    -- bukti
+  - explanation -- keterangan
+  - time        (TIME)
+  - date        (DATE)
+  - account     (string:50) number
+
+[QUERY]
+call ldb query "CREATE TABLE transaction id=aid()&name=string()&type=string()&profile_id=int()&method=int(1)&nominal=int(15)&transaction_date=string()&code=string()&status=string()&report=string(512)&evidence=string()&explanation=string()&time=time()&date=date()&account=string(50)"
+```
+
 
 
 
