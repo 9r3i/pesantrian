@@ -652,6 +652,27 @@ call ldb query "CREATE TABLE notification id=aid()&user_id=int()&message=string(
 call ldb query "CREATE TABLE transaction id=aid()&name=string()&type=string()&profile_id=int()&method=int(1)&nominal=int(15)&transaction_date=string()&code=string()&status=string()&report=string(512)&evidence=string()&explanation=string()&time=time()&date=date()&account=string(50)"
 ```
 
+## user
+```
+- user
+  - id (INT / KEY)
+  - name
+  - passcode
+  - type (table: employee/parent/student/...)
+  - profile_id (INT)
+  - active (INT)
+  - privilege (INT: 1/2/4/8/16/32)
+  - scope (JSON - array of scopes)
+  - data (JSON)
+  - time (TIME)
+  
+[QUERY]
+call ldb query "CREATE TABLE user id=aid()&name=string()&passcode=string(512)&active=int(1,0)&type=string()&profile_id=int()&privilege=int()&scope=string(512)&data=string(30000,LDB_BLANK)&time=time()"
+```
+
+
+
+
 
 
 
