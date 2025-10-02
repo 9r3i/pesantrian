@@ -670,6 +670,36 @@ call ldb query "CREATE TABLE transaction id=aid()&name=string()&type=string()&pr
 call ldb query "CREATE TABLE user id=aid()&name=string()&passcode=string(512)&active=int(1,0)&type=string()&profile_id=int()&privilege=int()&scope=string(512)&data=string(30000,LDB_BLANK)&time=time()"
 ```
 
+## clinic
+```
+- clinic
+  - id
+  - name
+  - student_id
+  - checkout --date
+  - checkin  --date
+  - clinic_name
+  - doctor_name
+  - treatment
+  - cost (INT)
+  - level (very_low/low/average/high/very_high)
+  - ailment
+  - medicine
+  - date  --date (INT)
+  - year  --year (INT)
+  - month --month (INT)
+  - height (INT)
+  - weight (INT)
+  - time (TIME)
+
+- [report]
+  - sick (INT)
+  - 
+
+[QUERY]
+call ldb query "create table clinic id=aid()&name=string()&student_id=int()&checkin=string()&checkout=string()&clinic_name=string()&doctor_name=string()&treatment=string()&cost=int()&ailment=string()&level=string()&medicine=string()&height=int()&weight=int()&date=int(2,1)&month=int(2,0)&year=int(4,2024)&time=time()"
+```
+
 
 
 
