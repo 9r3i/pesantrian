@@ -700,6 +700,31 @@ call ldb query "CREATE TABLE user id=aid()&name=string()&passcode=string(512)&ac
 call ldb query "create table clinic id=aid()&name=string()&student_id=int()&checkin=string()&checkout=string()&clinic_name=string()&doctor_name=string()&treatment=string()&cost=int()&ailment=string()&level=string()&medicine=string()&height=int()&weight=int()&date=int(2,1)&month=int(2,0)&year=int(4,2024)&time=time()"
 ```
 
+## tahfidz_valuation
+```
+- tahfidz_valuation
+  - id (INT/KEY)
+  - student_id (INT)
+  - juz (INT)
+  - tajwid (INT)
+  - fluency (INT)
+  - formative
+  - data (JSON)
+  - time (TIME)
+[QUERY]
+call ldb query "CREATE TABLE tahfidz_valuation id=aid()&student_id=int()&juz=int()&tajwid=int()&fluency=int()&formative=string(512)&data=string(30000,LDB_BLANK)&time=time()"
+
+[DATA]
+------
+tahfidz
+A+ = 96 - 100
+A- = 86 - 95
+B+ = 76 - 85
+B- = 71 - 75
+C+ = 66 - 70
+C- = 60 - 65
+```
+
 
 
 
