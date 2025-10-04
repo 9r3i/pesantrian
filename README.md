@@ -725,6 +725,26 @@ C+ = 66 - 70
 C- = 60 - 65
 ```
 
+## valuation
+```
+- valuation
+  - id (INT/KEY)
+  - student_id (INT)
+  - subject_id (INT)
+  - value (INT)
+  - letter
+  - time (TIME)
+[QUERY]
+call ldb query "CREATE TABLE valuation id=aid()&student_id=int()&subject_id=int()&value=int()&letter=string()&time=time()"
+
+------
+asrama
+A = Istimewa ( 91 - 100 ) 
+B = Baik ( 81 - 90 ) 
+C = Sedang ( 71 - 80 ) 
+D = Cukup ( 60 - 70 )
+```
+
 
 
 
