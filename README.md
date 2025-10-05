@@ -745,6 +745,20 @@ C = Sedang ( 71 - 80 )
 D = Cukup ( 60 - 70 )
 ```
 
+## daily_valuation
+```
+- daily_valuation
+  - id (INT/KEY)
+  - student_id (INT)
+  - subject_id (INT)
+  - value (INT)
+  - letter
+  - date
+  - time (TIME)
+[QUERY]
+call ldb query "CREATE TABLE daily_valuation id=aid()&student_id=int()&subject_id=int()&value=int()&letter=string()&date=string(10)&time=time()"
+```
+
 
 
 
