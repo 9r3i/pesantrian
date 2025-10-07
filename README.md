@@ -759,6 +759,36 @@ D = Cukup ( 60 - 70 )
 call ldb query "CREATE TABLE daily_valuation id=aid()&student_id=int()&subject_id=int()&value=int()&letter=string()&date=string(10)&time=time()"
 ```
 
+## subject
+```
+- subject
+  - id (INT/KEY)
+  - name
+  - teacher_id (INT)
+  - min_criteria (INT)
+  - predicate
+  - year
+  - semester (INT)
+  - class (INT)
+  - data (JSON)
+  - time (TIME)
+[QUERY]
+call ldb query "CREATE TABLE subject id=aid()&name=string(256)&teacher_id=int()&min_criteria=int()&predicate=string()&year=string()&semester=int()&class=int()&data=string(30000,LDB_BLANK)&time=time()"
+
+[DATA]
+- min_criteria (the result column)
+  - id (INT/KEY)
+  - subject_name
+  - subject_id
+  - complexity
+  - intake
+  - support (carrying capacity)
+    - facility
+    - teacher
+    - money
+    - material
+  - result (calculated from all and divided from count)
+```
 
 
 
