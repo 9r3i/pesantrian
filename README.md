@@ -790,6 +790,88 @@ call ldb query "CREATE TABLE subject id=aid()&name=string(256)&teacher_id=int()&
   - result (calculated from all and divided from count)
 ```
 
+## employee
+```
+- employee
+  - id (INT/KEY)
+  - name
+  - gender int(1)
+  - birthdate
+  - birthplace
+  - nik
+  - address (JSON)
+    - name 
+    - rt
+    - rw
+    - sub_district (desa/kelurahan)
+    - district (kecamatan)
+    - regency (kabupaten/kota)
+    - province (provinsi)
+    - zipcode
+  - phone
+  - email
+  - religion
+  - blood_group
+  - illness
+  - position (teacher/staff/admin/...)
+  - employee_status
+  - marritial_status
+  - children
+  - siblings
+  - spouse_name
+  - father_name
+  - mother_name
+  - nationality
+  - data (JSON)
+  - time (TIME)
+  - start_date
+[QUERY]
+call ldb query "CREATE TABLE employee id=aid()&name=string(256)&address=string(512)&gender=int(1)&birthdate=date()&birthplace=string(100)&nik=string(20)&phone=string(20)&email=string(100)&religion=string(64)&blood_group=string(3)&illness=string(256)&position=string(100)&employee_status=string(32)&marritial_status=string(32)&children=int()&siblings=int()&spouse_name=string(100)&father_name=string(100)&mother_name=string(100)&data=string(30000,LDB_BLANK)&nationality=string(100)&time=time()"
+
+[DATA]
+- keluarga (array)
+  - nama
+  - keterangan
+- pasangan (array)
+  - nama
+  - tanggal_lahir
+  - tempat_lahir
+  - tanggal_menikah
+  - tempat_menikah
+  - pekerjaan
+- anak (array)
+  - nama
+  - kelamin
+  - status enum(AK/AA/AT)
+  - tanggal_lahir
+  - tempat_lahir
+  - keterangan
+- pendidikan (object)
+  - formal (array)
+    - instritusi
+    - no_ijazah
+    - tahun_ijazah
+    - keterangan
+  - kursus (array)
+    - penyelenggara
+    - jenis
+    - keterangan
+- pengalaman_kerja (array)
+  - perusahaan
+  - posisi
+  - tahun
+  - keterangan
+- organisasi
+  - nama_organisasi
+  - jabatan
+  - tahun
+- keahlian (array)
+- visi_obsesi
+- hafalan
+  - juz
+  - status8
+```
+
 
 
 
