@@ -872,6 +872,84 @@ call ldb query "CREATE TABLE employee id=aid()&name=string(256)&address=string(5
   - status8
 ```
 
+## student
+```
+- student
+  - id (INT / KEY)
+  - name
+  - address (JSON)
+    - name 
+    - rt
+    - rw
+    - sub_district (desa/kelurahan)
+    - district (kecamatan)
+    - regency (kabupaten/kota)
+    - province (provinsi)
+    - zipcode
+  - gender int(1)
+  - birthdate
+  - birthplace
+  - father_id (INT)
+  - mother_id (INT)
+  - nis
+  - nisn
+  - nik
+  - nickname
+  - data (JSON)
+  - nationality
+  - time (INT / TIME)
+[QUERY]
+call ldb query "CREATE TABLE student id=aid()&name=string(256)&address=string(512)&gender=int(1)&birthdate=date()&birthplace=string(100)&father_id=int(10)&mother_id=int(10)&nis=string(20)&nisn=string(20)&nik=string(20)&data=string(30000,LDB_BLANK)&nationality=string(100)&time=time()"
+
+[MUTATION]
+- religion
+- child_order
+- siblings (INT)
+- step_siblings (INT)
+- foster_siblings (INT)
+- family_status
+- language
+- live_with
+- school_distance
+- blood_group
+- illness
+- abnormality
+- weight
+- height
+- hobby
+
+call ldb query "ALTER TABLE student ADD_COLUMN(religion=string()&child_order=string()&siblings=int()&step_siblings=int()&foster_siblings=int()&family_status=string()&language=string()&live_with=string()&school_distance=string()&blood_group=string()&illness=string()&abnormality=string()&weight=int()&height=int()&hobby=string())"
+
+[DATA]
+- pendidikan_sebelumnya
+  - sekolah_asal
+  - tanggal_ijazah
+  - no_ijazah
+  - lama_belajar
+- pindahan
+  - dari_sekolah
+  - alasan
+- diterima_di_sekolah_ini
+  - kelas
+  - angkatan
+  - jurusan
+  - tanggal
+- akhir_pendidikan
+  - tanggal
+  - alasan
+  - no_ijazah
+  - melanjutkan_ke
+  - mulai_bekerja
+  - nama_perusahaan
+  - penghasilan
+```
+
+
+
+
+
+
+
 
 
 
