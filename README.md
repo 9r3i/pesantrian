@@ -944,6 +944,35 @@ call ldb query "ALTER TABLE student ADD_COLUMN(religion=string()&child_order=str
   - penghasilan
 ```
 
+## parent
+```
+- parent
+  - id (INT / KEY)
+  - name
+  - address (JSON)
+    - name 
+    - rt
+    - rw
+    - sub_district (desa/kelurahan)
+    - district (kecamatan)
+    - regency (kabupaten/kota)
+    - province (provinsi)
+    - zipcode
+  - gender int(1)
+  - birthdate
+  - phone
+  - data (JSON)
+  - time (INT / TIME)
+  - nationality
+  - education
+  - job
+  - salary
+[QUERY]
+call ldb query "CREATE TABLE parent id=aid()&name=string(256)&address=string(512)&gender=int(1)&birthdate=date()&phone=string(20)&data=string(30000,LDB_BLANK)&time=time()&nationality=string(100)&education=string(100)&job=string(100)&salary=string(100)"
+[DATA]
+- 
+```
+
 
 
 
