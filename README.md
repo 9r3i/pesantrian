@@ -973,6 +973,38 @@ call ldb query "CREATE TABLE parent id=aid()&name=string(256)&address=string(512
 - 
 ```
 
+## browser
+```
+- browser
+  - id (int aid)
+  - code string
+  - data string
+  - time time
+```
+
+## employee_presence
+```
+- employee_presence
+  - id
+  - time
+  - year
+  - month
+  - date
+  - hour
+  - minute
+  - employee_id
+  - employee_name
+  - note
+[QUERY]
+create table employee_presence id=aid()&time=time()&year=int(4,2024)&month=int(2,0)&date=int(2,1)&hour=int(2,0)&minute=int(2,0)&employee_id=int(10)&employee_name=string(100)&note=string(100)
+------
+qrcode: ep:2024:kantor/dapur:time
+  table: ep
+  id   : 2024
+  name : kantor/dapur
+  space: time (expire)
+```
+
 
 
 
