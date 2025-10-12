@@ -1005,6 +1005,19 @@ qrcode: ep:2024:kantor/dapur:time
   space: time (expire)
 ```
 
+## blocked_card
+```
+blocked_card
+- id
+- year
+- month
+- type (employee/student)
+- profile_id
+- note
+[QUERY]
+create table blocked_card id=aid()&time=time()&year=int(4,2024)&month=int(2,0)&type=string(20)&profile_id=int(10)&note=string(100)
+```
+
 
 
 
