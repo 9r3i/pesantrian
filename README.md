@@ -1018,7 +1018,23 @@ blocked_card
 create table blocked_card id=aid()&time=time()&year=int(4,2024)&month=int(2,0)&type=string(20)&profile_id=int(10)&note=string(100)
 ```
 
-
+## laundry_non
+```
+- laundry_non
+  - id (INT / KEY)
+  - type (student,employee)
+  - profile_id (INT)
+  - nominal (INT)
+  - year (INT)
+  - month (INT)
+  - time (TIME)
+  - weight (string)
+  - kind (string)
+  - flow (INT)
+  
+[QUERY]
+call ldb query "CREATE TABLE laundry_non id=aid()&type=string()&profile_id=int()&nominal=int()&year=int(4,2024)&month=int(2,0)&time=time()&weight=string()&kind=string()&flow=int(1,0)"
+```
 
 
 
