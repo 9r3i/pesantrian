@@ -1036,6 +1036,21 @@ create table blocked_card id=aid()&time=time()&year=int(4,2024)&month=int(2,0)&t
 call ldb query "CREATE TABLE laundry_non id=aid()&type=string()&profile_id=int()&nominal=int()&year=int(4,2024)&month=int(2,0)&time=time()&weight=string()&kind=string()&flow=int(1,0)"
 ```
 
+## shopm_qrbill
+```
+- shopm_qrbill
+                0: (aid) [id:10] => LDB_AID
+                1: (time) [time:10] => LDB_TIME
+                2: (int) [nominal:10] => LDB_BLANK
+                3: (int) [student_id:10] => LDB_BLANK
+                4: (string) [student_name:100] => LDB_BLANK
+                5: (int) [year:4] => "2024"
+                6: (int) [month:2] => "0"
+                7: (int) [date:2] => "1"
+
+create table shopm_qrbill id=aid()&time=time()&nominal=int(10)&student_id=int(10)&student_name=string(100)&year=int(4,2024)&month=int(2,0)&date=int(2,1)
+```
+
 
 
 
