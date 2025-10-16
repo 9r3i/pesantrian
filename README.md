@@ -1051,6 +1051,26 @@ call ldb query "CREATE TABLE laundry_non id=aid()&type=string()&profile_id=int()
 create table shopm_qrbill id=aid()&time=time()&nominal=int(10)&student_id=int(10)&student_name=string(100)&year=int(4,2024)&month=int(2,0)&date=int(2,1)
 ```
 
+## it_lab
+```
+- it_lab
+  - id (int /key)
+  - time (time)
+  - status (int)
+  - type (string) (student/employee)
+  - profile_id (int)
+  - name (string)
+  - date (date)
+  - hour (string)
+  - purpose (string)
+  - unit (int)
+  - software (string)
+  - evidence (string)
+  - note (string)
+
+create table it_lab id=aid()&time=time()&status=int(1,0)&type=string(20)&profile_id=int(10,0)&name=string()&date=date()&hour=string(10)&purpose=string()&unit=int(3)&software=string()&evidence=string()&note=string()
+```
+
 
 
 
