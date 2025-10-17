@@ -1071,6 +1071,38 @@ create table shopm_qrbill id=aid()&time=time()&nominal=int(10)&student_id=int(10
 create table it_lab id=aid()&time=time()&status=int(1,0)&type=string(20)&profile_id=int(10,0)&name=string()&date=date()&hour=string(10)&purpose=string()&unit=int(3)&software=string()&evidence=string()&note=string()
 ```
 
+# eva structure
+```
+eva/wildcard/pesantrian
+- register
+  - data
+    - passcode
+    - name
+    - type
+- login
+  - data
+    - username
+    - password
+- uload
+  - data
+    - uid
+    - file
+    - path
+- cpass
+  - data
+    - old
+    - npass
+  - uid
+- query
+  - data
+    - query
+  - uid
+- queries
+  - data
+    - queries
+  - uid
+```
+
 
 
 
