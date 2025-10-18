@@ -67,7 +67,7 @@ scanner list:
 this.production=false;
 /* the version code */
 Object.defineProperty(this,'versionCode',{
-  value:343,
+  value:349,
   writable:false,
 });
 /* the version */
@@ -86,6 +86,7 @@ this.appHosts={
   sweetalert  : 'https://cdn.jsdelivr.net/npm/sweetalert2@11',
   qr_host     : QR_HOST,
   eva_dev     : 'http://127.0.0.1:9303/api/eva/',
+  //eva_dev     : 'https://careful-urchin-curiously.ngrok-free.app/api/eva/',
   eva         : EVA_API_HOST,
   script      : SCRIPT_HOST,
   online      : ONLINE_HOST,
@@ -18480,6 +18481,7 @@ this.credit=100; /* means 100k */
 this.table=_Pesantrian.table;
 this.row=_Pesantrian.row;
 this.rowHead=_Pesantrian.rowHead;
+this.xua='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) atibs/2.5.0 Chrome/124.0.6367.243 Electron/30.4.0 Safari/537.36';
 
 this.init=async function(){
   this.app.menuButton.remove();
@@ -18605,6 +18607,11 @@ this.init=async function(){
 
 /* qrscanner -- bill */
 this.billScanner=async function(dmonth,dyear){
+  if(navigator.userAgent==this.xua){
+    /* scan laundry -- cancel here
+    return _Pesantrian.alert('Error: Transaction Failed!','','error');
+    */
+  }
   dmonth=typeof dmonth==='number'?dmonth:(new Date).getMonth();
   dyear=dyear||(new Date).getFullYear();
   let student=await _Pesantrian.scannerPageX(),
@@ -19477,23 +19484,24 @@ this.monthlyReportNon=async function(type='employee',month,year){
   row.classList.add('tr-head');
   table.append(row);
 };
-this.addLaundryNon=function(id,name){
+this.addLaundryNon=function(id,name,month,year){
   this.clearBody();
+  month=typeof month==='number'?month:(new Date).getMonth();
+  year=year||(new Date).getFullYear();
   /* goback button */
   this.app.body.append(
     _Pesantrian.goback(async ()=>{
-      await this.tableDetailNon(id);
+      await this.tableDetailNon(id,month,year);
     })
   );
-  let year=(new Date).getFullYear(),
-  month=(new Date).getMonth(),
-  data={
+  let data={
     nominal:0,
     kind:'Cuci saja',
     weight:'',
   },
   row=this.rowHead('LAUNDRY<br />'
-    +name+' (Non-Subsidi)'),
+    +name+' (Non-Subsidi)'
+    +'<br />'+this.month[month]+' '+year),
   table=this.table();
   table.append(row);
   for(let key in data){
@@ -19550,7 +19558,7 @@ this.addLaundryNon=function(id,name){
     if(!error){
       btn.disabled=true;
       setTimeout(async ()=>{
-        await this.tableDetailNon(id);
+        await this.tableDetailNon(id,month,year);
       },1600);
     }
   };
@@ -19578,7 +19586,7 @@ this.tableDetailNon=async function(id,month,year){
   laundries=data[1],
   title='Laundry '+user.name+' (Non-Subsidi)'
     +'<br />'+this.month[month]+' '+year,
-  row=this.rowHead(title,5),
+  row=this.rowHead(title,6),
   add=document.createElement('input'),
   subsidy=0,
   total=0,
@@ -19591,22 +19599,54 @@ this.tableDetailNon=async function(id,month,year){
   add.onclick=()=>{
     this.addLaundryNon(id,user.name);
   };
-  row=this.row('Tanggal','Nominal','Jenis','Berat',month==thisMonth?add:'');
+  row=this.row('Tanggal','Nominal','Jenis','Berat',add,'ID');
   row.classList.add('tr-head');
   table.append(row);
   this.app.body.append(table);
   for(let line of laundries){
-    let pr=document.createElement('span');
+    let pr=document.createElement('span'),
+    del=document.createElement('input');
     pr.innerText=_Pesantrian.parseNominal(line.flow==1?line.nominal:-line.nominal);
     pr.classList.add(line.flow==1?'credit-plus':'credit-minus');
+    del.type='submit';
+    del.value='Hapus';
+    del.classList.add('button');
+    del.classList.add('button-delete');
+    del.dataset.id=line.id;
+    del.dataset.flow=line.flow;
+    del.dataset.nominal=line.nominal;
+    del.onclick=async function(){
+      let yes=await _Pesantrian.confirmX('Hapus?');
+      if(!yes){return;}
+      let loader=_Pesantrian.loader(),
+      row=document.getElementById('row-'+this.dataset.id),
+      saldo=document.getElementById('saldo-td'),
+      query='delete from laundry_non where id='+this.dataset.id,
+      res=_Pesantrian.request('query',query);
+      loader.remove();
+      if(res&&row&&saldo){
+        row.remove();
+        let nominal=parseInt(this.dataset.nominal),
+        total=parseInt(saldo.dataset.saldo);
+        if(this.dataset.flow==1){
+          total-=nominal;
+        }else{
+          total+=nominal;
+        }
+        saldo.innerText=_Pesantrian.parseNominal(total);
+        saldo.dataset.saldo=total;
+      }
+    };
     row=this.row(
       _Pesantrian.parseDate(parseInt(line.time)*1000),
       pr,
       line.kind,
       line.weight,
-      line.id
+      del,
+      line.id,
     );
     row.childNodes[1].classList.add('td-right');
+    row.id='row-'+line.id;
     table.append(row);
     if(line.flow==1){
       total+=parseInt(line.nominal);
@@ -19617,9 +19657,11 @@ this.tableDetailNon=async function(id,month,year){
   /* total */
   row=this.row('Total',
     _Pesantrian.parseNominal(total),
-    '','',''
+    '','','',''
   );
   row.childNodes[1].classList.add('td-right');
+  row.childNodes[1].id='saldo-td';
+  row.childNodes[1].dataset.saldo=total;
   row.classList.add('tr-head');
   table.append(row);
   
@@ -19938,23 +19980,24 @@ this.monthlyReport=async function(type='student',month,year){
   row.classList.add('tr-head');
   table.append(row);
 };
-this.addLaundry=function(id,type,name){
+this.addLaundry=function(id,type,name,month,year){
   this.clearBody();
+  month=typeof month==='number'?month:(new Date).getMonth();
+  year=year||(new Date).getFullYear();
   /* goback button */
   this.app.body.append(
     _Pesantrian.goback(async ()=>{
-      await this.tableDetail(id,type);
+      await this.tableDetail(id,type,month,year);
     })
   );
-  let year=(new Date).getFullYear(),
-  month=(new Date).getMonth(),
-  data={
+  let data={
     nominal:0,
     kind:'Cuci saja',
     weight:'',
   },
   row=this.rowHead('LAUNDRY<br />'
-    +name+' ('+this.alias(type)+')'),
+    +name+' ('+this.alias(type)+')'
+    +'<br />'+this.month[month]+' '+year),
   table=this.table();
   table.append(row);
   for(let key in data){
@@ -19980,6 +20023,7 @@ this.addLaundry=function(id,type,name){
   div.classList.add('grid-max');
   this.app.body.append(div);
   btn.onclick=async ()=>{
+    btn.disabled=true;
     let data=_Pesantrian.formSerialize();
     delete data.data;
     data.profile_id=id;
@@ -20011,7 +20055,7 @@ this.addLaundry=function(id,type,name){
     if(!error){
       btn.disabled=true;
       setTimeout(async ()=>{
-        await this.tableDetail(id,type);
+        await this.tableDetail(id,type,month,year);
       },1600);
     }
   };
@@ -20027,6 +20071,7 @@ this.tableDetail=async function(id,type='student',month,year){
   month=typeof month==='number'?month:(new Date).getMonth();
   year=year||(new Date).getFullYear();
   let loader=_Pesantrian.loader(),
+  userLevel=_Pesantrian.user.privilege,
   thisMonth=(new Date).getMonth(),
   query=type=='student'
     ?'select id,name from student where id='+id
@@ -20041,7 +20086,7 @@ this.tableDetail=async function(id,type='student',month,year){
   laundries=data[1],
   title='Laundry '+user.name+' ('+this.alias(type)+')'
     +'<br />'+this.month[month]+' '+year,
-  row=this.rowHead(title,5),
+  row=this.rowHead(title,6),
   add=document.createElement('input'),
   subsidy=type=='student'?0:this.credit*1000,
   total=subsidy,
@@ -20052,24 +20097,56 @@ this.tableDetail=async function(id,type='student',month,year){
   add.value='Tambah';
   add.classList.add('button-add');
   add.onclick=()=>{
-    this.addLaundry(id,type,user.name);
+    this.addLaundry(id,type,user.name,month,year);
   };
-  row=this.row('Tanggal','Nominal','Jenis','Berat',month==thisMonth?add:'');
+  row=this.row('Tanggal','Nominal','Jenis','Berat',add,'ID');
   row.classList.add('tr-head');
   table.append(row);
   this.app.body.append(table);
   for(let line of laundries){
-    let pr=document.createElement('span');
+    let pr=document.createElement('span'),
+    del=document.createElement('input');
     pr.innerText=_Pesantrian.parseNominal(line.flow==1?line.nominal:-line.nominal);
     pr.classList.add(line.flow==1?'credit-plus':'credit-minus');
+    del.type='submit';
+    del.value='Hapus';
+    del.classList.add('button');
+    del.classList.add('button-delete');
+    del.dataset.id=line.id;
+    del.dataset.flow=line.flow;
+    del.dataset.nominal=line.nominal;
+    del.onclick=async function(){
+      let yes=await _Pesantrian.confirmX('Hapus?');
+      if(!yes){return;}
+      let loader=_Pesantrian.loader(),
+      row=document.getElementById('row-'+this.dataset.id),
+      saldo=document.getElementById('saldo-td'),
+      query='delete from laundry where id='+this.dataset.id,
+      res=_Pesantrian.request('query',query);
+      loader.remove();
+      if(res&&row&&saldo){
+        row.remove();
+        let nominal=parseInt(this.dataset.nominal),
+        total=parseInt(saldo.dataset.saldo);
+        if(this.dataset.flow==1){
+          total-=nominal;
+        }else{
+          total+=nominal;
+        }
+        saldo.innerText=_Pesantrian.parseNominal(total);
+        saldo.dataset.saldo=total;
+      }
+    };
     row=this.row(
       _Pesantrian.parseDate(line.time*1000),
       pr,
       line.kind,
       line.weight,
-      line.id
+      line.flow==1&&type=='student'&&userLevel<9?'':del,
+      line.id,
     );
     row.childNodes[1].classList.add('td-right');
+    row.id='row-'+line.id;
     table.append(row);
     if(line.flow==1){
       total+=parseInt(line.nominal);
@@ -20080,17 +20157,19 @@ this.tableDetail=async function(id,type='student',month,year){
   /* subsidy */
   row=this.row('Subsidi',
     _Pesantrian.parseNominal(subsidy),
-    '','',''
+    '','','','',
   );
   row.childNodes[1].classList.add('td-right');
   row.classList.add('tr-head');
   table.append(row);
   /* total */
-  row=this.row('Total',
+  row=this.row('Saldo',
     _Pesantrian.parseNominal(total),
-    '','',''
+    '','','','',
   );
   row.childNodes[1].classList.add('td-right');
+  row.childNodes[1].id='saldo-td';
+  row.childNodes[1].dataset.saldo=total;
   row.classList.add('tr-head');
   table.append(row);
   
@@ -23548,7 +23627,8 @@ this.selection={
       'Abu Bakar - BSI 7164 457 715',
       'Donasi Aisyah - BSI 7164 541 066',
       'Donasi Abu Bakar - BSI 7164 458 584',
-      'Bendahara - BSI 7134 2000 43',
+      'Bendahara - BSI 7134 200 043',
+      'Bendahara - BSI 7315 134 042',
       'Tunai',
     ],
     accountx:[
@@ -23556,7 +23636,8 @@ this.selection={
       'Abu Bakar - BSI 7164 457 715 a/n Yayasan Abu Bakar Mulya',
       'Donasi Aisyah - BSI 7164 541 066 a/n Yayasan Aisyah Mulya',
       'Donasi Abu Bakar - BSI 7164 458 584 a/n Yayasan Abu Bakar Mulya',
-      'Bendahara - BSI 7134 2000 43 a/n Rina Ferianti',
+      'Bendahara - BSI 7134 200 043 a/n Rina Ferianti',
+      'Bendahara - BSI 7315 134 042 a/n Rina Ferianti',
       'Tunai',
     ],
     year:[
@@ -24568,8 +24649,7 @@ this.withdrawScanner=async function(nominal,table){
     queries=[
       'select * from transaction where type="'+type
         +'" and profile_id='
-        +student_id+' and name="saving" and '
-        +this.getQueryTA(),
+        +student_id+' and name="saving" ',
       'select * from blocked_card where type="'+type
         +'" and profile_id='+student_id
         +' and year='+year
@@ -29443,6 +29523,14 @@ this.init=async function(){
       }
     },
     );
+    apps.push(
+    {
+      name:'qrcode',
+      title:'QRPenalty',
+      callback:function(e){
+        _PesantrianIt.billScanner();
+      }
+    },);
   }
   let adminApps=_Pesantrian.buildApps(apps);
   this.clearBody();
@@ -29464,6 +29552,150 @@ this.init=async function(){
     let args=Array.isArray(this.app.args)?this.app.args:[];
     return this[this.app.next].apply(this,args);
   }
+};
+
+
+
+/* qrscanner -- bill */
+this.billScanner=async function(dmonth,dyear){
+  dmonth=typeof dmonth==='number'?dmonth:(new Date).getMonth();
+  dyear=dyear||(new Date).getFullYear();
+  let student=await _Pesantrian.scannerPageX(),
+  tables={
+    s:'student',
+    e:'employee',
+  };
+  if(!student||student.id==0
+    ||!tables.hasOwnProperty(student.table)){
+    return _Pesantrian.alert('Error: Invalid QRCode!','','error');
+  }
+    /* prepare date, month and year */
+    let loader=_Pesantrian.loader(),
+    student_id=student.id.toString(),
+    student_name=student.name,
+    date=(new Date).getDate(),
+    month=(new Date).getMonth(),
+    year=(new Date).getFullYear(),
+    nominal=10000,
+    type=tables[student.table],
+    explanation='Denda kartu rusak atau hilang',
+    data={
+      name:'saving',
+      type,
+      profile_id:student_id,
+      method:0,
+      nominal,
+      date:[
+        year,
+        (month+1).toString().padStart(2,'0'),
+        date.toString().padStart(2,'0'),
+      ].join('-'),
+      transaction_date:[
+        year,
+        (month+1).toString().padStart(2,'0'),
+        date.toString().padStart(2,'0'),
+      ].join('-'),
+      month,
+      year,
+      status:'paid',
+      account:'Tunai',
+      uid:_Pesantrian.user.id,
+      data:{"rincian":{}},
+      report:'',
+      explanation,
+      transaction_code:'qrbill_penalty',
+    },
+    queries=[
+      'select * from transaction where type="'+type
+        +'" and profile_id='+student_id
+        +' and name="saving" ',
+      'select * from blocked_card where type="'+type
+        +'" and profile_id='+student_id
+        +' and year='+dyear
+        +' and month='+dmonth,
+    ].join(';'),
+    pdata=await _Pesantrian.request('queries',queries),
+    saving=this.getSavingBalance(pdata[0]);
+    if(pdata[1].length>0){
+      loader.remove();
+      return _Pesantrian.alert(
+        'Error: Card is being blocked!',
+        'Usually till the end of the month.',
+        'error'
+      );
+    }
+    if(saving<parseInt(nominal)){
+      loader.remove();
+      return _Pesantrian.alert(
+        'Error: Saldo tabungan tidak mencukupi!',
+        'Saldo: '+_Pesantrian.parseNominal(saving)
+          +' ('+student_name+')',
+        'error'
+      );
+    }
+    /* real input */
+    let innerQuery=_Pesantrian.buildQuery(data);
+    queries=[
+      'insert into transaction '+innerQuery,
+    ].join(';');
+    let res=await _Pesantrian.request('queries',queries);
+    loader.remove();
+    if(res.join('')==1){
+      let al=await _Pesantrian.alertX(
+        'Transaksi berhasil!',
+        'Saldo: '+_Pesantrian.parseNominal(saving-parseInt(nominal))
+          +' ('+student_name+')',
+        'success'
+      );
+      return;
+    }
+    let al=await _Pesantrian.alertX(
+      'Error: Failed to pay the bill!',
+      res,
+      'error'
+    );
+};
+this.getSavingBalance=function(data=[]){
+  let ndata=this.getFinanceByType(data,'saving'),
+  total=0;
+  for(let d of ndata){
+    if(d.method==1){
+      total+=parseInt(d.nominal);
+    }else{
+      total-=parseInt(d.nominal);
+    }
+  }return total;
+};
+this.getFinanceByType=function(data,type){
+  data=Array.isArray(data)?data:[];
+  let res={
+    contribution:[],
+    saving:[],
+    donation:[],
+    petty_cash:[],
+    initial_fund:[],
+    tahfidz_camp:[],
+    school_event:[],
+    register_annually:[],
+    register_smp:[],
+    register_sma_next:[],
+    register_sma_new:[],
+    register_test_sma:[],
+    register_test_smp:[],
+  },
+  month=(new Date).getMonth(),
+  year=(new Date).getFullYear(),
+  oyear=month<6?[year-1,year]:[year,year+1];
+  for(let line of data){
+    if(!res.hasOwnProperty(line.name)){
+      res[line.name]=[];
+    }
+    res[line.name].push(line);
+    if((line.month<6&&line.year==oyear[1])
+      ||(line.month>5&&line.year==oyear[0])){
+    }
+  }
+  return res.hasOwnProperty(type)?res[type]:[];
 };
 
 

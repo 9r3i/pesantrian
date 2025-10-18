@@ -4,11 +4,16 @@ this readme.md file is just a note for myself, no one would know.
 # configuration
 dont forget to configure this global constants
 ```js
-const EVA_API_HOST     = "EVA_ACCESS_TOKEN",
-      EVA_ACCESS_TOKEN = "EVA_ACCESS_TOKEN",
-      REPO_HOST        = "REPO_HOST",
-      CORNER_HOST      = "CORNER_HOST",
-      QR_HOST          = "QR_HOST";
+/* global constant data */
+const BASE_API_HOST="BASE_API_HOST",
+EVA_API_HOST=BASE_API_HOST+"eva/",
+EVA_ACCESS_TOKEN="EVA_ACCESS_TOKEN",
+REPO_HOST="REPO_HOST",
+CORNER_HOST="CORNER_HOST",
+QR_HOST="QR_HOST",
+SCRIPT_HOST=BASE_API_HOST+"script/",
+ONLINE_HOST=BASE_API_HOST+"online/",
+FCM_KEY="FCM_KEY";
 ```
 or use raw constant segement from abl
 
@@ -33,7 +38,7 @@ ai tool peureut css/pesantrian.css && ai tool peureut js/pesantrian.js
 ```
 
 ### obuscate
-then obfuscate the minimized file in ```https://obfuscator.io/```
+then obfuscate the minimized file in [https://obfuscator.io/](https://obfuscator.io/)
 
 
 ## move from download
@@ -1102,6 +1107,8 @@ eva/wildcard/pesantrian
     - queries
   - uid
 ```
+
+
 
 
 
