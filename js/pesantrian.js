@@ -42,6 +42,7 @@ scanner list:
 */
 
 
+
 /*
  * Pesantrian
  * ~ an pesantrian app
@@ -67,7 +68,7 @@ scanner list:
 this.production=false;
 /* the version code */
 Object.defineProperty(this,'versionCode',{
-  value:349,
+  value:352,
   writable:false,
 });
 /* the version */
@@ -1475,7 +1476,7 @@ this.request=async (method,query,xid=0)=>{
       this.userData(false);
       this.user=null;
       this.clearNotification();
-      _Pesantrian.notif('Error: Inactive account! -- Akun sedang dibekukan, silahkan hubungi divisi IT untuk mengaktifkan kembali.','error');
+      _Pesantrian.alert('Error: Inactive account!','Akun sedang dibekukan, silahkan hubungi divisi IT untuk mengaktifkan kembali.','error');
       let loader=this.loader();
       setTimeout(async ()=>{
         await this.load('login.html');
@@ -1483,7 +1484,10 @@ this.request=async (method,query,xid=0)=>{
       },1000);
     }else if(data=='error:maintenance'){
       let text='Server sedang dalam proses pemeliharaan, mohon kembali beberapa saat lagi.';
-      _Pesantrian.notif('Server Maintenance! -- '+text,'info');
+      _Pesantrian.alert('Server Maintenance!',text,'info');
+    }else if(data=='error:offline'){
+      let text='Server sedang dalam keadaan offline, mohon kembali beberapa saat lagi.';
+      _Pesantrian.alert('Server Offline!',text,'error');
     }else{
       _Pesantrian.notif('Error! -- '+data,'error');
     }
@@ -1502,7 +1506,10 @@ this.request=async (method,query,xid=0)=>{
       },1000);
     }else if(data.error=='error:maintenance'){
       let text='Server sedang dalam proses pemeliharaan, mohon kembali beberapa saat lagi.';
-      _Pesantrian.notif('Server Maintenance! -- '+text,'info');
+      _Pesantrian.alert('Server Maintenance!',text,'info');
+    }else if(data.error=='error:offline'){
+      let text='Server sedang dalam keadaan offline, mohon kembali beberapa saat lagi.';
+      _Pesantrian.alert('Server Offline!',text,'error');
     }else if(typeof data.error==='string'){
       _Pesantrian.notif('Error: Request failed! -- '+data.error,'error');
     }else{
@@ -18605,6 +18612,143 @@ this.init=async function(){
   }
 };
 
+
+/* force -- bill */
+this.billForce=async function(dmonth,dyear,student){
+  dmonth=typeof dmonth==='number'?dmonth:(new Date).getMonth();
+  dyear=dyear||(new Date).getFullYear();
+  let tables={
+    s:'student',
+    e:'employee',
+  };
+  if(!student||student.id==0
+    ||!tables.hasOwnProperty(student.table)){
+    return _Pesantrian.alert('Error: Invalid data!','','error');
+  }
+  let yes=await _Pesantrian.confirmX('Bayar paksa?',student.name);
+  if(!yes){return;}
+    /* prepare date, month and year */
+    let loader=_Pesantrian.loader(),
+    student_id=student.id.toString(),
+    student_name=student.name,
+    date=(new Date).getDate(),
+    month=(new Date).getMonth(),
+    year=(new Date).getFullYear(),
+    type=tables[student.table],
+    explanation=dmonth==month?'Pembayaran laundry.'
+      :'Pelunasan laundry bulan '+this.month[dmonth]+'.',
+    data={
+      name:'saving',
+      type,
+      profile_id:student_id,
+      method:0,
+      nominal:0,
+      date:[
+        year,
+        (month+1).toString().padStart(2,'0'),
+        date.toString().padStart(2,'0'),
+      ].join('-'),
+      transaction_date:[
+        year,
+        (month+1).toString().padStart(2,'0'),
+        date.toString().padStart(2,'0'),
+      ].join('-'),
+      month,
+      year,
+      status:'paid',
+      account:'Tunai',
+      uid:_Pesantrian.user.id,
+      data:{"rincian":{}},
+      report:'',
+      explanation,
+      transaction_code:'qrbill_laundry',
+    },
+    dataLaundry={
+      type,
+      profile_id:student_id,
+      nominal:0,
+      year:dyear,
+      month:dmonth,
+      flow:1,
+      kind:(
+        dmonth==month
+          ?'Pembayaran laundry'
+          :'Pelunasan laundry bulan '+this.month[dmonth]
+        )
+        +' dari tabungan.',
+    },
+    queries=[
+      'select * from transaction where type="'+type
+        +'" and profile_id='+student_id
+        +' and name="saving" ',
+      'select * from laundry where profile_id='+student_id
+        +' and type="'+type
+        +'" and month='+dmonth
+        +' and year='+dyear,
+      'select * from blocked_card where type="'+type
+        +'" and profile_id='+student_id
+        +' and year='+dyear
+        +' and month='+dmonth,
+    ].join(';'),
+    pdata=await _Pesantrian.request('queries',queries),
+    saving=this.getSavingBalance(pdata[0]),
+    credit=this.getCredit(student_id,pdata[1],'student'),
+    blocked=pdata[2].length>0?true:false,
+    nominal=credit*-1;
+    if(blocked){
+      loader.remove();
+      return _Pesantrian.alert(
+        'Error: Card is being blocked!',
+        'Usually till the end of the month.',
+        'error'
+      );
+    }
+    if(credit>=0){
+      loader.remove();
+      return _Pesantrian.alert(
+        'Tidak ada yang perlu dibayar!',
+        'Saldo: '+_Pesantrian.parseNominal(saving)
+          +' ('+student_name+')',
+        'info'
+      );
+    }
+    if(saving<parseInt(nominal)){
+      loader.remove();
+      return _Pesantrian.alert(
+        'Error: Saldo tabungan tidak mencukupi!',
+        'Saldo: '+_Pesantrian.parseNominal(saving)
+          +' ('+student_name+')',
+        'error'
+      );
+    }
+    /* prepare new nominal */
+    data.nominal=nominal;
+    dataLaundry.nominal=nominal;
+    /* real input */
+    let innerQuery=_Pesantrian.buildQuery(data),
+    innerQueryLaundry=_Pesantrian.buildQuery(dataLaundry);
+    queries=[
+      'insert into transaction '+innerQuery,
+      'insert into laundry '+innerQueryLaundry,
+    ].join(';');
+    let res=await _Pesantrian.request('queries',queries);
+    loader.remove();
+    if(res.join('')==11){
+      let al=await _Pesantrian.alertX(
+        'Transaksi berhasil!',
+        'Saldo: '+_Pesantrian.parseNominal(saving-parseInt(nominal))
+          +' ('+student_name+')',
+        'success'
+      );
+      return;
+    }
+    let al=await _Pesantrian.alertX(
+      'Error: Failed to pay the bill!',
+      res,
+      'error'
+    );
+};
+
 /* qrscanner -- bill */
 this.billScanner=async function(dmonth,dyear){
   if(navigator.userAgent==this.xua){
@@ -20288,6 +20432,19 @@ this.tableLaundry=async function(type='student',month,year,subs=true){
     lunasin.dataset.year=year;
     lunasin.onclick=async function(){
       if(this.dataset.type=='student'){
+        if(_Pesantrian.user.profile.position=='finance'
+          ||_Pesantrian.user.privilege>=16){
+          _PesantrianLaundry.billForce(
+            parseInt(this.dataset.month,10),
+            parseInt(this.dataset.year,10),
+            {
+              table:this.dataset.type=='employee'?'e':'s',
+              id:this.dataset.profile_id,
+              name:this.dataset.name,
+            }
+          );
+          return;
+        }
         _PesantrianLaundry.billScanner(
           parseInt(this.dataset.month,10),
           parseInt(this.dataset.year,10),
@@ -24224,6 +24381,7 @@ this.qrBillForm=async function(code,employees=[]){
   );
   let codes=[
     'qrbill_shop',
+    'qrbill_shopm',
     'qrbill_laundry',
     'qrbill_penalty',
   ];
