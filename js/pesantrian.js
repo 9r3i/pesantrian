@@ -18,6 +18,7 @@ if(typeof ABL_OBJECT==='undefined'){
   return await (new Pesantrian).start();
 };
 
+
 /* global constant data */
 const BASE_API_HOST="BASE_API_HOST",
 EVA_API_HOST=BASE_API_HOST+"eva/",
@@ -28,6 +29,9 @@ QR_HOST="QR_HOST",
 SCRIPT_HOST=BASE_API_HOST+"script/",
 ONLINE_HOST=BASE_API_HOST+"online/",
 FCM_KEY="FCM_KEY";
+
+
+
 
 /*
 scanner list:
@@ -40,7 +44,6 @@ scanner list:
 - scanner
 - 
 */
-
 
 
 /*

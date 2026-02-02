@@ -1,0 +1,66 @@
+
+
+
+1. Kantor
+   - router: zte f670l -- 2.4g knbsd5
+   - def-pswd: Gh7NbTED
+   - user: user
+   - pswd: user0987
+   - gateaway: 192.168.1.1
+2. Masjid
+   - router: fiberhome
+   - def-pswd: (none)
+   - user: user
+   - pswd: user0987
+   - def-pswd: user1234
+   - gateaway: 192.168.1.1
+3. Bawah
+   - router: tp-link wr840n -- 3d70
+   - def-pswd: 73774525
+   - user: admin
+   - pswd: nimda
+   - def-pswd: admin
+   - gateaway: 192.168.0.1
+4. Perpus
+   - router: tp-link -- a982
+   - def-pswd: 97420910
+   - user: (none)
+   - pswd: atibs2024
+   - gateaway: 
+5. Asma
+   - router: tenda
+   - def-pswd: (none)
+   - user: (none)
+   - pswd: (none)
+   - gateaway: 
+6. Security + Asrama Marwah
+   - router: mi extender
+   - using mi home app
+7. Asrama Marwah
+   - router: asus RT-N12HP_B1
+   - def-pswd: (none)
+   - user: admin
+   - pass: nimda
+   - gateaway: 192.168.2.1
+
+
+
+
+
+
+
+[5/11, 15:13] Al Anshary Software: USERNAME: user
+PASSWORD: user1234
+[5/11, 15:36] Al Anshary Software: user0987
+[5/11, 15:37] Al Anshary Software: ATIBS-MASJID
+[5/11, 15:51] Al Anshary Software: 73774525
+[5/11, 16:00] Al Anshary Software: ATIBS-BAWAH
+[5/11, 16:16] Al Anshary Software: 97420910
+[5/11, 16:17] Al Anshary Software: ATIBS-PERPUS
+[5/11, 16:19] Al Anshary Software: atibs2024
+[5/11, 16:20] Al Anshary Software: 97420910
+[5/11, 16:36] Al Anshary Software: zte 2.4g knbsd5
+[5/11, 16:44] Al Anshary Software: Gh7NbTED
+[5/11, 16:45] Al Anshary Software: ATIBS-KANTOR
+[5/11, 17:01] Al Anshary Software: ATIBS-ASMA
+[5/11, 17:26] Al Anshary Software: ATIBS-SECURITY

@@ -1,0 +1,33 @@
+Bismillaahirrahmaanirrahiim.
+
+Report of the week #240608
+
+Forwarded to:
+1. Yayasan Aisyah Abu Bakar Mulya (AABUYA) Pak Halim, Bu Sari dan Pak Noldy.
+2. Mudir AATIBS, Ustadz Yazid Abdul 'Alim
+3. Kepala Divisi Media dan IT, Ustadz Ghazin Fauzi
+
+Berikut laporan pekan ini, tanggal 8 Juni 2024:
+
+1. Alhamdulillaah, aplikasi ATIBS untuk platform browser sudah selesai. Versi ini akan sangat membantu beberapa pengguna yang membutuhkan layar yang lebar. Saat ini hanya dapat diakses di: https://9r3i.web.id/ dan langkah-langkah authentication tercantum di laporan ini paling bawah.
+
+2. Alasan mengapa di browser harus memakai authentication, itu dikarenakan browser mempunyai probabilitas tinggi untuk injeksi data melalui console. Tapi mempunyai kelebihan tersendiri, yaitu mengurangi error terputusnya koneksi, karena DNS aplikasi di browser sama dengan DNS database. Jadi, dengan alasan tersebut untuk performance dan koneksi, saya akan merekomendasikan versi browser ini.
+
+3. Maintaining and daily security-checking all wifi routers in ma'had.
+
+4. Maintaining and daily backup database 3 times a day.
+
+
+Berikut langkah-langkah menggunakan aplikasi ATIBS platform browser:
+1. Masuk ke aplikasi ATIBS di Android, lalu masuk ke self-profile dengan menyentuh tombol profile di pojok kanan-bawah, scroll ke bawah dan sentuh tombol *Get Code* [Gambar 1]
+2. Lalu akan muncul tulisan berupa script-code [Gambar 2]
+3. Buka browser masukan domain `9r3i.web.id`, lalu masukan kode yang tercantum pada aplikasi tadi [Gambar 3], kemudian klik *SEND THE CODE* atau tekan tombol *Enter*
+4. Jika tidak menggunakan laptop pribadi, jangan lupa keluar dengan mengklik tombol *End Browser Session* [Gambar 4]
+
+
+Demikian laporan pekan ini, mudah-mudahan dapat difahami.
+Barakallaahu fiikum.
+
+
+--Abu Ayyub
+

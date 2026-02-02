@@ -1,0 +1,27 @@
+Bismillaahirrahmaanirrahiim.
+
+Report of the week #240518
+
+Forwarded to:
+1. Yayasan Aisyah Abu Bakar Mulya (AABUYA) Pak Halim, Bu Sari dan Pak Noldy.
+2. Mudir AATIBS, Ustadz Yazid Abdul 'Alim
+3. Kepala Divisi Media dan IT, Ustadz Ghazin Fauzi
+
+Berikut laporan pekan ini, tanggal 18 Mei 2024:
+
+1. Me-reset setiap router wi-fi di Ma'had supaya tertata rapih dan mudah di-maintain. Kemudian mengoptimalkan beberapa setting penting pada setiap router-nya, seperti: WPS setting, DHCP setting dan frequency setting, demi keamanan dan kenyamanan seluruh pengguna wi-fi didalam wilayah ma'had. Serta kesemua itu banyak dibantu oleh kepala divisi sanpras, Ustadz Wawan Wijaya.
+
+2. Memberikan "class leason" sebanyak 2 pertemuan di pekan ini kepada kelas niha'i tentang pemongraman dan ulasan singkat tentang bahasa pemongraman, terutama javascript.
+
+3. Recovering database setelah terjadi server down yang menyebabkan data corrupt pada tanggal 12 Mei 2024.
+
+4. Masih dalam tahap review pengembangan aplikasi ATIBS untuk platform browser. Review mencakup keamanan injeksi data pada console browser, dan ini akan banyak menguras banyak waktu, tapi akan tetap dilakukan demi kemudahan akses pengguna kedepannya.
+
+5. Maintaining and daily backup database 3 times a day (minimum).
+
+
+Sekian laporan pekan ini, mudah-mudahan dapat difahami.
+Barakallaahu fiikum.
+
+
+--Abu Ayyub

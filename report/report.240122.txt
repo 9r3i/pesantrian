@@ -1,0 +1,44 @@
+Bismillah,
+
+Berikut laporan mingguan (weekly report) pekan ini, January 22nd 2024.
+
+
+A. Database
+
+Rancang bangun database masih berproses dan bertahap, sejalan dengan saya mempelajari alur data yang akan nantinya diolah dengan aplikasi.
+
+Sejauh ini untuk kebutuhan admin, tabel relasi dan alur data sudah cukup, tinggal input data yang nantinya akan dikerjakan oleh pak Amar sebagai admin.
+
+Kemudian untuk kebutuhan bendahara, tabel relasi sedang dalam tahap penyempurnaan, lalu kemudian pengetesan tahap uji coba sehingga dapat diketahui dimana letak kekurangan dan kelemahan pertahanan data ini, supaya tidak ada kebocoran data keuangan yang dapat menyebabkan berbagai kemungkinan buruk terjadi. Ini akan berlangsung agak lama, karna ini salah satu bagian vital dalam database. Mudah-mudahan dapat selesai dengan sempurna.
+
+Selanjutnya untuk kebutuhan klinik dan data kesehatan santri, kemarin saya sudah bertemu dengan divisi kesehatan dan baru mulai mempelajari alur datanya.
+
+Juga laundry, dapur, kantin dan lainnya akan segera menyusul setelah kebutuhan diatas sudah terpenuhi. 
+
+Adapun untuk Akademik, semua sudah saya pelajari, namun dalam hal penilaian tahfidz, saya masih mempelajarinya, karena cara dan alur penilaiannya yang sangat berbeda dengan akademik.
+
+
+B. Software & Application
+
+Alhamdulillah, aplikasi mulai merangkak juga dengan berjalannya pengerjaan database. Tentunya, rancang bangun database harus sesuai dengan skenario aplikasi, jadi mau bagaimana pun, aplikasi akan dibangun seiring dengan rancang bangun database.
+
+Akan saya lampirkan recorded screen untuk aplikasi ini.
+
+
+C. API (application programming interface)
+
+Ini pun merupakan bagian penting dalam mengatur komunikasi antara aplikasi dan database, dan berkembang sejalan pula dengan keduanya. Saya tanam API ini di server, salah satunya adalah untuk memproteksi data yang terkirim ke dan diambil dari database.
+
+
+D. CCTV
+
+Alhamdulillah CCTV sudah saya serahkan seutuhnya kepada mbak Shafira Madia dan Marketing, termasuk PIN untuk akses CCTV dan password akun Xiaomi milik saya, sudah saya serahkan. Jadi, dengan ini saya sudah tidak mempunyai hak akses lagi ke CCTV tersebut.
+
+
+Demikian seluruh laporan yang dapat saya sampaikan, mudah-mudahan Allah memudahkan segala urusan kita semua.
+
+
+Alhamdulillah...
+
+Abu Ayyub
+

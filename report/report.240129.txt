@@ -1,0 +1,33 @@
+Bismillaah,
+
+Berikut laporan pekan ini (Report of the week), 29 January 2024.
+
+
+A. Software dan Aplikasi
+
+Alhamdulillah, aplikasi sudah di approve oleh Playstore, namun ada beberapa bug untuk notifikasi yang masih belum saya pecahkan karna ini terkendala SDK Android yang disesuaikan dengan kebijakan Google. Selain itu akun berbayar saya untuk notifikasi juga sedang masa pemulihan, jadi masih belum bisa memakai notifikasi live ini.
+
+Dalam hal pengembangan, beberapa sub-aplikasi atau aplikasi dalam aplikasi ini, yang sudah selesai diantaranya adalah: Laundry, Dapur, Security, Admin, Klinik, Orangtua dan Bendahara. Namun semua ini akan perlu trial atau masa uji coba minimal 1 bulan saja untuk diterapkan kepada pemakainya. Hal tersebut sangat perlu untuk meninjau beberapa hal diantaranya: seberapa user-friendly kah? seberapa penting kah untuk pemakai? apakah memenuhi kebutuhan pemakai? apakah lebih memudahkan atau malah mempersulit? dan lain sebagainya.
+
+Dan untuk sebulan kedepan, mulai dari tanggal 1 February, saya akan mencoba untuk trial di beberapa divisi: Laundry, Dapur, Security, Admin, Klinik, Orangtua dan Bendahara.
+
+Untuk beberapa sub-aplikasi seperti: Guru (Akademik) belum saya kerjakan, sejujurnya saya masih belum mengerti alur data yang akan diproses. Karena dikhawatirkan salah perhitungan dan tentunya saya tidak mau kerja 2 kali cuma gara-gara masalah ini. Koding bukan drag and drop atau copy-paste, salah ketik . (titik) dan , (koma) saja bisa membuat aplikasi error, apalagi kode yang saya tulis saat ini sudah mencapai lebih dari 10 ribu baris.
+
+
+B. Database
+
+Sebenarnya, database masih dalam tahap rancang bangun, karena saya masih belum mengerti alur data di divisi akademik. Dan perlu antum ingat dalam proses rancang bangun, ini dapat menumbulkan kebocoran data jika database digunakan untuk proses aplikasi saat proses rancang bangun masih dilakukan. Seperti yang terjadi pada hari Sabtu kemarin, saat pak Amar input data santriwati, sementara itu disisi lain saya tengah eksekusi query alter table untuk table relasi santriwati dengan dapur.
+
+
+C. Perangkat
+
+Sangat disayangkan jika kita membangun teknologi namun tidak ada sumber daya, terutama dibidang perangkat keras. Beberapa diantara karyawan kita tidak mampu menyediakan benda tersebut sendiri. Alangkah baiknya, jika yayasan menyediakan perangkat mobile untuk memfasilitasi karyawannya, minimal 1 perangkat untuk 1 divisi. Untuk saat ini kita memerlukan minimal 4 buah smartphone untuk masing-masing divisi: Dapur, Security, Maintenance dan Laundry.
+
+
+Demikian seluruh laporan pekan ini yang dapat saya sampaikan. Mudah-mudahan dewan yayasan dapat mempertimbangkannya supaya sistem sekolah dapat berjalan dengan baik. Semoga Allah memudahkan segala urusan kita semua.
+
+
+
+Barakallaahu fiikum...
+
+-- Abu Ayyub a.k.a. Niner

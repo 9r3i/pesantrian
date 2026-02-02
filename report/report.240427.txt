@@ -1,0 +1,32 @@
+Bismillaah.
+
+Report of the week #240427
+
+Forwarded to:
+1. Yayasan Aisyah Abu Bakar Mulya (AABUYA)
+2. Mudir AATIBS, Ustadz Yazid Abdul 'Alim
+3. Kepala Divisi Media dan IT, Ustadz Ghazin
+
+Berikut laporan pekan ini, tanggal 27 April 2024
+
+1. Update aplikasi ATIBS ke versi 2.0.0, dengan enhancment data transfer, optimalize feature and new icons. Status masih dalam proses review oleh pihak Playstore. Mudah-mudahan dapat release pekan depan.
+
+2. Pengolahan data Inventory dialihkan seluruhnya ke Maintenance, dan beberapa feature divisi ada yang dihilangkan seperti Media dan Kebersihan yang isinya hanya Inventory saja.
+
+3. Absensi Tahfizh dan absensi kelas dibagi kepada beberapa sesi, sesuai dengan instruksi dari Mudir.
+
+4. Data keuangan kantin review bulanan.
+
+5. Daily backup dan weekly backup database.
+
+6. Repair beberapa laptop, salah satunya laptop lenovo kantor asrama, dan sebagian lagi masih dalam proses. Seperti charger yang rusak dan keyboard yang harus diganti, masih menunggu sparepart untuk penggantinya.
+
+
+Sekian laporan yang dapat saya sampaikan kali ini, mudah-mudahan dapat dimaklumi.
+Barakallaahu fiikum.
+
+
+--Abu Ayyub
+
+
+

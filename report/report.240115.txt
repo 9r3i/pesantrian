@@ -1,0 +1,36 @@
+Bismillah,
+
+Berikut laporan mingguan (weekly report) pekan ini, January 15th 2024.
+
+A. Database
+
+Dalam pengerjaan database yang sedang saya kerjakan saat ini masih dalam proses rancang bangun, supaya relasi antar tabel tidak semrawut dan mudah dihubungkan satu sama lain. Hal ini dapat mempercepat proses selection atau input data pada table-table tersebut, serta memudahkan aplikasi mengaksesnya.
+
+
+B. Software & Application
+
+Software yang pertama saya sedang kembangkan adalah satu sistim satu database, didalamnya akan ada beberapa aplikasi untuk divisi tertentu dan akses dibatasi sesuai dengan privilege, divisi atau bidang yang pegawai itu berada.
+
+Saya juga sudah menyiapkan UI untuk software yang saya bangun, terutama untuk mobile Android. Untuk desktop mungkin akan dikerjaan setelah versi mobile berhasil dituntaskan, in syaa Allah.
+
+
+C. API (application programming interface)
+
+Ini adalah penghubung antara aplikasi dan database supaya tetap aman dan tak dapat di decode dan di decrypt oleh pihak-pihak yang tidak berkepentingan. Jadi data yang ditarik dari database atau dikirim ke database tidak mentah, dan ini akan meningkatkan keamanan data secara menyeluruh.
+
+
+D. CCTV
+
+Alhamdulillah, CCTV terpasang berkat bantuan dari pak Adhan yang sudah membantu banyak, dan sesuai dengan arahan.
+
+Saat ini saya belum bisa berkomunikasi dengan tim media mengenai releasing footage dari CCTV, karena hari sabtu saya ke kantor mereka tidak ada di tempat, dan karena beralasan mereka sedang libur pada hari ahad, mungkin hari senin ini saya akan bertemu tim media.
+
+
+
+Demikian seluruh laporan yang dapat saya sampaikan, mudah-mudahan Allah memudahkan segala urusan kita semua.
+
+
+Alhamdulillah...
+
+Abu Ayyub
+

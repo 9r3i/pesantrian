@@ -1,0 +1,77 @@
+Bismillah,
+
+Berikut laporan mingguan (weekly report) pekan ini, January 9th 2024.
+
+
+A. Networking (Jaringan)
+
+1. Router bisa diubah menjadi repeater, namun akses internet akan tertumpu pada satu router primer yang di-repeat melalui repeater tersebut. Tentunya ini akan membantu server terfokus pada satu router dan dapat diakses oleh siapapun yang terkoneksi pada jaringan tersebut. Namun yang disayangkan adalah method ini akan mengakibatkan overload data ke router primer terutama pada jaringan internet dan dapat menimbulkan masalah baru seperti overheat pada router, akses internet yang melambat drastis dan kendala lainnya terkait akses internet.
+2. Sebagaimana yang pernah kita diskusikan tempo hari, kita akan menggunakan wifi repeater diberbagai titik strategis supaya menjangkau seluruh area ma'had. Dan akan ada router yang digunakan sebagai router primer, jika server disimpan dikantor, maka router kantor akan menjadi router primer. Saya akan mencoba metode ini bila alatnya sudah tersedia. Dan kemungkinan akan banyak uji coba dibagian jaringan karena saya tergolong baru dalam hal networking atau jaringan.
+3. Tanpa wifi repeater, metode ini akan sepenuhnya berhasil, namun kedepannya setiap guru diharuskan mengisi data di area yang terjangkau oleh router primer saja, yaitu wifi kantor. Tapi metode ini tidak bisa dilakukan untuk aplikasi diluar itu, misalnya apliaksi pembukuan dapur dan laundry yang relatif jauh dari router primer (out of range).
+4. Solusi untuk kemungkinan metode nomor 2 dan 3 tidak berhasil, saya akan menyarankan untuk memakai internet saja. Saya yakin metode ini akan berhasil, karna ini mainan saya sehari-hari. Dan tentunya saya akan lebih fokus pada pengerjaan aplikasi dan database. Tapi melihat budget yang kita punya saat ini, metode ini akan menguras dana. Secara aplikasi yang kita rencanakan harus dapat diakses secara real-time, otomatis server yang disewa harus stabil dan dedicated.
+5. Terakhir, jika solusi nomor 4 tidak berhasil, saya bisa menyediakan server untuk aplikasi yang saya kembangkan nanti, real-time dan stable server, namun terbatas dengan drive space yang hanya 1 GB saja.
+
+Demikian laporan pekan ini mengenai jaringan (networking), mudah-mudahan dapat menjadi bahan pertimbangan.
+
+
+B. Server
+
+Alhamdulillah, server sudah saya install dengan OS baru yaitu Linux Debian Server 2023 (Bookworm), dan sudah terinstall library yang dibutuhkan untuk aplikasi, database dan software yg dibutuhkan kedepannya, supaya siap untuk digunakan dan diakses.
+Sudah berada dikantor dan sudah terkoneksi dengan router terdekat yaitu kantor, serta sudah siap untuk diakses sebagai database.
+
+
+C. Data Access
+
+Selanjutnya adalah tentang akses data, setelah meninjau beberapa usulan dari para asatidz dan asatidzah mengenai data akses pada rapat koordinasi tanggal 6 Januari, saya berkesimpulan bahwa software atau aplikasi yang saya kembangkan harus terintegrasi internet, bukan hanya intranet saja.
+
+1. Dari divisi keuangan, mereka ingin orang tua dapat mengecek/memeriksa keuangan pembayaran SPP, sudah bayar atau belum. Tentunya ini akan membutuhkan akses internet, bukan hanya intranet.
+2. Dari bagian akademik sekolah, mereka ingin orang tua dapat memantau nilai anaknya disekolah, ini juga membutuhkan internet, bukan hanya intranet.
+3. Dari tim tahfidz, mereka ingin orang tua dapat memantau seberapa jauh hafalan anaknya/santriwati, juga membutuhkan akses internet.
+4. Serta meninjau aplikasi e-Ponpes Imam Bukhari yang antum usulkan, saya melihat aplikasi ini juga menggunakan internet, bukan hanya intranet.
+5. Terakhir, sebagaimana yang sudah jadi wacana kita sebelumnya, data dapat diakses secara real-time sebagaimana yang disampaikan juga oleh pak Halim pada rapat kemarin, tentunya kita butuh server yang kuat. Karena jenis koneksi real-time itu Keep-Alive, bukan close akses seperti website pada umumnya.
+
+Dari 4 hal diatas, dapat disimpulkan menjadi 3 hal:
+
+1. Melanjutkan dengan server laptop yang sudah disiapkan, dan pastinya ini akan membutuhkan Public IP yang disewa dari ISP, dalam hal ini Telkom secara internet yang digunakan adalah IndiHome. Dan kisaran harga sewa 1 Public IP per tahun adalah 2 juta hingga 3 juta. Tanpa public IP, server ATIBS tidak dapat diakses oleh internet dan juga oleh orang tua murid.
+2. Atau kita dapat menyewa server sebagai data center, supaya dapat diakses langsung via internet, tanpa membutuhkan repeater/extender ataupun laptop untuk server. System seperti ini pun aman, saya akan terapkan data encryption untuk setiap data yang dikirim dan disimpan melalui internet.
+3. Solusi terakhir, sama seperti point A:5, saya bisa menyediakan server untuk aplikasi yang saya kembangkan, server yang real-time dan stable, namun terbatas dengan drive space yang hanya 1 GB saja.
+
+Mohon dengan segera antum memberikan keputusannya untuk hal ini, supaya saya lebih fokus dalam pengembangan Software dan database.
+
+
+D. Software, Application & Database
+
+1. Masih proses skema database, dan masih berkoordinasi dengan divisi lain untuk kegunaan dan kebutuhan masing-masing divisi, seperti yang sudah kita bicarakan, bahwa kita akan mengolah data: akademik, kegiatan disekolah, tahfidz, laporan keuangan, sekertariat, laporan raport, orangtua, guru, absensi, dapur, laundry, kantin, security dan kesehatan. Perlu sekali ketelitian dalam segi keamanan supaya tidak mudah diretas.
+2. Software, masih dalam proses skema, aplikasi harus user-friendly dan mudah digunakan.
+3. Aplikasi yang dikembangkan hanya satu, namun mencakup semua kebutuhan sekolah.
+
+
+E. Extension (Tambahan)
+
+Tanpa mengurangi rasa hormat saya, sekedar klarifikasi supaya tidak ada kesalahpahaman dalam pengertian antara INTERNET dan INTRANET.
+
+1. INTRANET adalah akses data dalam jangkauan local, dan SERVER hanya dapat diakses secara local pula. Meskipun server tersebut terhubung dengan internet, server INTRANET tidak akan dapat diakses oleh user dari luar area local.
+2. INTERNET, akses luas ke seluruh dunia, dan SERVER dapat diakses oleh siapa saja yang terhubung ke INTERNET. Dan untuk menghubungkan SERVER dengan INTERNET, ini tidak hanya butuh akses internet saja. SERVER yang terhubung ke internet membutuhkan PUBLIC IP sebagai alamat atau DNS dari SERVER tersebut.
+
+Saya sampaikan point tambahan ini adalah untuk mempercepat pekerjaan, jangan sampai kita (terutama saya dalam bidang ini) tidak harus kerja dua kali dalam mengolah data serta mengembangkan software dan aplikasi. Semoga antum dapat mengerti apa yang saya sampaikan.
+
+
+F. Finger Print Device
+
+1. Device (mesin fingerprint) sudah aktif dan sudah terpasang rapi di depan pintu utama kantor, supaya setiap orang dapat melakukan check fingerprint (absensi) tanpa harus masuk kedalam kantor.
+2. Gathering data record untuk biometric fingerprint 95% sudah masuk hanya beberapa yang belum seperti ibu Afifah yang berada di asrama Abu Bakar.
+3. Untuk saat ini dan kedepannya, kita para karyawan, staff dan guru akan check fingerprint sekali saja sehari. Mengingat komplikasi pada jadwal dan shift security, dapur dan guru asrama, tidak dapat dilakukan check fingerprint seperti perusahaan konvensional pada umumnya.
+4. Juga keterbatasan mesin fingerprint (device) dalam mengumpulkan data kehadiran yang tidak dapat disetting secara fleksibel, saya tetap menyarankan untuk check fingerprint sekali dalam sehari. Dan dalam hal ini, saya mohon pengertianya.
+
+
+Demikian seluruh laporan yang dapat saya sampaikan, mudah-mudahan Allah memudahkan segala urusan kita semua.
+
+
+Alhamdulillah...
+
+Abu Ayyub
+
+
+
+
+

@@ -1,0 +1,67 @@
+Bismillaah.
+
+Pak Noldy, berikut laporan pekan ini, February 5th 2024. Dan kemungkinan besar laporan terakhir saya.
+
+
+A. Database
+
+Alhamdulillaah, rancang bangun berangsur berkembang, diantaranya: Akademik yang mencakup Guru Mapel, Walikelas, Class Inventory, Eskul, Event perlombaan dan sejenisnya. Di divisi lain seperti Tahfizh, Asrama, Kantin, Media Inventory dan yang berhubungan dengannya. Serta optimasi beberapa table yang dinilai belum sesuai.
+
+
+B. Aplikasi
+
+Alhamdulillaah, aplikasi sudah bisa di download di playstore dengan keyword: ATIBS. Atau bisa langsung download di: https://play.google.com/store/apps/details?id=al.anshary.atibs
+
+Aplikasi juga sudah mulai masa trial dan sosialisasi kepada para asatidz melalui koordinatornya. Dan masa trial ini akan berlangsung selama 1 bulan sejalan dengan pengembangan aplikasi yang belum selesai.
+
+Kemudian, aplikasi versi desktop juga sudah bisa di install, sayangnya aplikasi ATIBS versi desktop ini hanya dapat di install di Linux saja. Mungkin bisa juga di Windows, selama user nya dapat menginstall library GIT dan NPM pada console CMD.
+
+
+C. Komputer
+
+Sebagaimana yang sudah saya sampaikan melalui laporan harian melalui WhatsApp, banyak komputer lama yang (mohon maaf) ngebangke bekas di lab. Saya sudah periksa satu per satu, banyak yang layarnya rusak dan banyak juga yang tidak dapat menyala sama sekali.
+
+Saya sudah mencoba memperbaiki yang masih bisa menyala. Alhamdulillaah, hanya 3 yang sudah normal kembali, kemudian saya install dengan Linux dan aplikasi ATIBS versi desktop khusus Linux saja.
+
+Saya juga sudah menaruh komputer-komputer tersebut di beberapa divisi yang membutuhkan, seperti:
+
+1. Laundry, meskipun sudah menginstall aplikasi ATIBS di hapenya, tapi hape orang laundry ini tidak bisa rendering data dari aplikasi yang saya buat. Jadi, komputer ini sangat dibutuhkan sekali di sini.
+
+2. Pos Security untuk data pembukuan paket dan tamu.
+
+3. Dapur juga sudah di pasang komputer, dan hape CS sudah dikembalikan ke pihak sebelumnya.
+
+4. Dan beberapa laptop yang dipakai asatidz juga sudah di install OS Linux dan aplikasi ATIBS.
+
+
+D. Lainnya
+
+1. Sangat disayangkan sekali memang, disaat sekolah kekurangan dana, disisi lain foya-foya. Disaat karyawannya membutuhkan fasilitas disisi lain mengeluarkan dana untuk yang sebenarnya bisa dialihkan ke fasilitas yang sedang dibutuhkan.
+
+2. Contoh fasilitas yang sedang dibutuhkan adalah: sebuah laptop yang sedang dibutuhkan Ibu Ustadzah Rina di Bendahara, sebuah PC yang sedang dibutuhkan Pak Amar di Admin, wifi extender yang sedang dibutuhkan untuk asrama dan laundry, smartphone yang sedang dibutuhkan di beberapa divisi, dan setiap detail yang kemungkinan tidak disampaikan oleh karyawan ataupun asatidz.
+
+3. Faktanya, untuk pengadaan fasilitas ma'had seolah sulit sekali terwujud, bilangnya untuk ini dulu lah itu dulu lah, tapi untuk sesuatu yang sebenarnya tidak terlalu dibutuhkan bisa cepat terlaksana meski itu sangat mendadak.
+
+4. Jika seseorang atau beberapa orang ini tidak tahu dan mengerti skala prioritas, saya tidak akan heran lagi, mengapa sampai saat ini sekolah ini masih memakai jalur donasi untuk membangun fasilitas.
+
+5. Logika dan faktanya seperti ini, jika menyewa penginapan untuk 3 hari dan untuk puluhan orang saja mampu, masa sih sewa server saja tidak mampu. (glad i'm not being part of this)
+
+6. Awalnya saya berfikir, mungkin ma'had/sekolah ini sedang dalam masa sulit atau kesulitan ekonomi, makanya saya rela membiarkan server saya dipakai untuk keperluan ma'had/sekolah, dan juga rela dibayar yang cuma 2 juta. Yang (mohon maaf, hari gini gaji 2 juta) UMR Kabupaten Bogor saja hampir 5 juta.
+
+7. Benar sekali awalnya saya berfikir begitu, tapi nyatanya, masih mampu untuk mengeluarkan dana hanya untuk sesuatu yang sebenarnya, dana tersebut bisa dialihkan pada hal yang lebih penting. Atau sepenting itukah menginap 3 hari.
+
+8. Sekarang, saya mulai mengerti mengapa statistik sekolah terus menurun dan kemungkinan besar akan tetap seperti itu. Salah satu faktornya dengan beberapa point diatas, sedangkan salah satu faktor lainnya adalah tidak pernah mau mendengar.
+
+9. Kemudian saya menilai bahwasannya saya tidak dibutuhkan disini, saya tidak mempunyai peran sama sekali disini. Buktinya, gaji yang ditawarkan cuma 2 juta, tidak sampai seper-empatnya gaji saya saat bekerja di perusahaan lain. Bukan ke antum pak, saya membicarakan seseorang yang bicaranya tinggi, mobilnya mentereng, gaya necis dan terlalu banyak nyengir, tapi giliran ditanya salary, hanya 2 juta. Kalau orang ini masih punya rasa malu, pasti dia akan sangat malu sekali. Dan pastinya lagi dia tidak cocok berada di bisnis ini.
+
+10. Jika dewan yayasan tidak mampu membayar saya, tolong tidak perlu beralasan yang bermacam-macam. Jangan lagi beralasan: Antum digaji 2 juta karena antum akan mendapatkan fasilitas ini dan itu, dan tidak bisa diuangkan. Malu lah sama Allah, mending bicara apa adanya dan realistis.
+
+11. Terakhir, saya mendengar antum ingin merubah sekolah ini ke arah yang lebih baik, terutama dalam kwalitas, struktur dan kinerja para pengajarnya dan beberapa lini yang masih dipandang kurang sesuai. Tapi kalau antum saja masih ikut dengan keinginan dewan diatas, lalu apa peran saya yang tidak mempunyai wewenang apapun, yang segala sesuatunya harus lapor dulu ke antum.
+
+
+Demikian seluruh laporan pekan ini. Mudah-mudahan antum meneruskan (forward) pesan ini kepada dewan yayasan. Karena bagaimana pun, saya pasti akan menghadap dan berbicara langsung dengan dewan yayasan mengenai perkara tersebut diatas.
+
+Akhirul kalam, "jika seseorang membutuhkan orang lain, maka seseorang itu akan menghargai orang tersebut".
+
+
+-- Niner

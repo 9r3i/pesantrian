@@ -1,0 +1,29 @@
+Bismillaahirrahmaanirrahiim.
+
+Report of the week #240601
+
+Forwarded to:
+1. Yayasan Aisyah Abu Bakar Mulya (AABUYA) Pak Halim, Bu Sari dan Pak Noldy.
+2. Mudir AATIBS, Ustadz Yazid Abdul 'Alim
+3. Kepala Divisi Media dan IT, Ustadz Ghazin Fauzi
+
+Berikut laporan pekan ini, tanggal 1 Juni 2024:
+
+1. Masih "onprogress" pengembangan aplikasi ATIBS untuk platform browser, perapihan data client dalam penyesuaian pada browser untuk meminimalisir terjadinya injeksi data melalui console. Dalam update patch tanggal 28, v2.0.6, aplikasi akan memaksa setiap penggunanya untuk logout dan login kembali. Supaya dapat siap pada mode production pekan depan, in syaa Allah.
+
+2. Aplikasi tersebut akan rilis jika sudah tersedia medianya, dalam hal ini adalah hosting dan domain sebagai media akses melalui browser.
+
+3. Setelah meninjau kembali upaya untuk mendapatkan hosting gratis bersama Kepala divisi Media dan IT, Ustadz Ghazin Fauzi, kita tidak mengambilnya dengan alasan server yang dipakai adalah server Indoensia. Untuk itu, kita bersepakat untuk mengabungkan website Abu Bakar dengan Aisyah menjadi satu domain saja, dengan mengubah nama domainnya pada perpanjangan sewa hosting bulan depan untuk satu tahun kedepan.
+
+4. Maintaining and daily security-checking all wifi routers in ma'had.
+
+5. Maintaining and daily backup database 3 times a day.
+
+6. Menyikapi perkembangan AI (kecerdasan buatan) di dunia teknologi, saya berinisiatif melakukan survey kepada pegawai ma'had (onprogress, 70%) tentang pengetahuan mereka pada hal ini. Jika memungkinkan saya ingin sekali berbagi pengetahuan ini, karena 95% masih belum sadar dan memahami apa dan bagaimana AI ini dapat berpengaruh pada kehidupan kita.
+
+
+Demikian laporan pekan ini, mudah-mudahan dapat dimaklumi.
+Barakallaahu fiikum.
+
+
+--Abu Ayyub

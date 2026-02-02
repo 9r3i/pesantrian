@@ -1,0 +1,33 @@
+Bismillaah,
+
+Report of the week #240302
+
+Alhamdulillaah, pekan ini mengalami pekan yang cukup berat, seperti yang sudah saya sampaikan, laptop dan hape saya mati total, mungkin karna saya banyak dosa, dan mungkin punya salah kepada antum semua yang belum termaafkan, oleh karena itu saya sampaikan permohonan maaf saya atas segala kesalahan saya yang belum termaafkan.
+
+Baik, untuk laporan pekan ini:
+
+1. CCTV sudah di bongkar semua total ada 8 buah, sudah diperiksa dan dipastikan yang nyala ada 7 buah dan yang tidak dapat menyala 1 buah.
+1.a. Dua diantaranya dengan kondisi baik, hanya saja yang 2 ini tidak memiliki sensor infrared, jadinya tidak bisa dipakai dimalam hari.
+1.b. 2 lagi CCTV outdoor waterproof, kondisi buram di lensa, memiliki sensor infrared, dan akan dipasang di gerbang ma'had untuk memantau area luar benteng depan ma'had.
+1.c. 2 lagi CCTV outdoor non-waterproof, kondisi sama dengan yang diatas lensa buram, memiliki sensor infrared, rencana akan di pasang untuk memantau sekitaran luar ma'had yang belum tercover namun teduh dari hujan, seperti gerbang belakang dan sisi timur ma'had.
+1.d. 1 lagi yang masih menyala CCTV outdoor non-waterproof, dengan kondisi perlu perbaikan banyak, nanti saya coba perbaiki supaya bisa digunakan kembali.
+1.e. Dan yang terakhir yang tidak menyala, belum diketahui kerusakannya.
+1.f. Pemasangan akan dilakukan setelah pesanan kabel dan konektor CCTV sampai, kemungkinan kable akan sampai pada hari senin.
+2. Aplikasi sudah bisa di download dan di install dalam versi desktop windows (64bit) dan Linux OS, sosialisasi kepada orangtua/wali santri akan dilakukan oleh korlasnya masing-masing, setelah kami tim IT memberikan arahan kepada korlasnya untuk dapat mensosialisasikan setiap detail dalam aplikasi tersebut.
+3. Progress aplikasi juga masih terus berlanjut sesuai kebutuhan dan kepentingan ma'had dan hampir setiap hari update, serta akan terus melakukan update dan penyesuaian dengan kebutuhan kedepannya.
+4. Untuk super-user, yang dapat mengakses keseluruhan data ada 2 akun, yaitu: akun yayasan dan akun ibu ustadzah rina bendahara, dengan level keamanan 8.
+4.a. Akun super-user ustadzah rina diperlukan karena beliau mengelola dan mengawasi hampir setiap divisi, terutama keuangan bendahara, tahfizh, halaqah, asrama, klinik, keuangan laundry, keuangan kantin, paket santri, kunjungan santri dan perizinan santri.
+4.b. Akun super-user yayasan sudah saya kirim ke antum sekalian, dengan username: "admin" dan password: "aisyahx" (without quote), dan akun ini hanya dapat diakses oleh antum sekalian: pak noldy, pak halim dan ibu sari.
+5. Laptop ASUS server, saya simpan dan titipkan di pak amar (admin), mungkin akan dibutuhkan kembali apabila nanti ada alter table dalam database. Laptop ini sudah masuk pada inventory it, antum boleh cek di aplikasi.
+6. Laptop Dell dengan kode barang AK.02.06.03.02.03.007, terdaftar di inventory kantor yang dicatat oleh pak amar. Saya pakai untuk kebutuhan koding aplikasi dan maintain database, karena laptop dan hape saya sendang rusak, jadi laptop ini akan saya pinjam untuk kebutuhan tersebut diatas, sampai saya dapat membeli kembali laptop dan hape baru.
+7. Memberikan pengarahan dan penjelasan pada pengguna aplikasi dari Aisyah dan Abu Bakar pada rapat tadi pagi, belum terjelaskan semua karena hanya dapat jatah setengah jam saja.
+8. Dari rapat yang disampaikan ustadz Yazid, dalam struktur ma'had kedepannya bahwa saya akan berada dibawah Mudir. Dan kemungkinan besar laporan selanjutnya juga kedepannya akan diforward ke Mudir juga.
+
+
+Demikian untuk laporan pekan ini yang dapat saya sampaikan, mudah-mudahan dapat dimaklumi, dan saya pastikan mulai laporan ini dan seterusnya, saya forward langsung ke yayasan.
+
+Barakallaahu fiikum…
+
+
+--Abu Ayyub
+

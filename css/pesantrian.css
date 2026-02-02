@@ -1189,6 +1189,9 @@ pre{
   background-color:rgba(250,250,250,0.5);
   border-radius:10px;
 }
+.app-table tr.tr-hide{
+  display:none;
+}
 .app-table td.td-head{
   background-color:rgba(48,150,149,0.5);
   color:#fff;
@@ -1215,6 +1218,7 @@ pre{
   border-radius:5px;
   background-color:#333;
   color:#fff;
+  white-space:nowrap;
 }
 .app-table .gender-0{
   background-color:#b37;
@@ -1251,6 +1255,10 @@ pre{
 .app-table .tap-delete:before{
   content:"x";
 }
+.app-table td .radio-parent{
+  white-space:pre-wrap;
+  line-height:32px;
+}
 .app-table td input[type="radio"]{
   display:initial;
   width:10px;
@@ -1267,6 +1275,7 @@ pre{
   background-color:#333;
   color:#fff;
   margin-right:5px;
+  margin-bottom:7px;
   white-space:pre;
 }
 .app-table td input[type="radio"]{
@@ -1278,6 +1287,30 @@ pre{
 }
 .app-table td input[type="radio"]:checked + label.radio-active{
   background-color:#7b3;
+}
+.app-table td input[type="radio"]:checked + label.radio-0{
+  background-color:#b33;
+}
+.app-table td input[type="radio"]:checked + label.radio-1{
+  background-color:#7b3;
+}
+.app-table td input[type="radio"]:checked + label.radio-2{
+  background-color:#b73;
+}
+.app-table td input[type="radio"]:checked + label.radio-3{
+  background-color:#37b;
+}
+.app-table td input[type="radio"]:checked + label.radio-4{
+  background-color:#bb3;
+}
+.app-table td input[type="radio"]:checked + label.radio-5{
+  background-color:#73b;
+}
+.app-table td input[type="radio"]:checked + label.radio-6{
+  background-color:#b37;
+}
+.app-table td input[type="radio"]:checked + label.radio-7{
+  background-color:#77b;
 }
 .app-table td input[type="checkbox"]{
   display:initial;
@@ -1302,6 +1335,36 @@ pre{
 }
 .app-table td.extra-high{
   padding:20px 0px;
+}
+.app-table td span.lab-status{
+  padding:5px 13px;
+  background-color:#333;
+  color:#fff;
+  border-radius:50%;
+}
+.app-table td span.lab-status-0{
+  background-color:#b33;
+}
+.app-table td span.lab-status-1{
+  background-color:#7b3;
+}
+.app-table td span.lab-status-2{
+  background-color:#b73;
+}
+.app-table td span.lab-status-3{
+  background-color:#37b;
+}
+.app-table td span.lab-status-4{
+  background-color:#bb3;
+}
+.app-table td span.lab-status-5{
+  background-color:#73b;
+}
+.app-table td span.lab-status-6{
+  background-color:#b37;
+}
+.app-table td span.lab-status-7{
+  background-color:#77b;
 }
 .app-table .margin-up{
   margin:10px 0px;

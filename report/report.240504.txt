@@ -1,0 +1,27 @@
+Bismillaah.
+
+Report of the week #240504
+
+Forwarded to:
+1. Yayasan Aisyah Abu Bakar Mulya (AABUYA)
+2. Mudir AATIBS, Ustadz Yazid Abdul 'Alim
+3. Kepala Divisi Media dan IT, Ustadz Ghazin Fauzi
+
+Berikut laporan pekan ini, tanggal 4 Mei 2024
+
+1. Release aplikasi ATIBS ke versi 2.0.0 di Playstore. https://play.google.com/store/apps/details?id=al.anshary.atibs
+
+2. Platform Windows 10 & 11 64bit. https://atibs.sch.id/atibs/files/atibs-2.0.0.win64.exe
+
+3. Platform Linux 64bit. https://atibs.sch.id/atibs/files/atibs-2.0.0.AppImage
+
+4. Android 10 ke bawah, atau lowend android device. https://atibs.sch.id/atibs/files/al.anshary.atibs.lex-2.0.0.200.apk
+
+5. Daily backup dan weekly backup database.
+
+
+Demikian laporan kali ini, mudah-mudahan dapat difahami.
+Barakallaahu fiikum.
+
+
+--Abu Ayyub

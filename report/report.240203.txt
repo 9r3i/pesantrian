@@ -1,0 +1,51 @@
+Bismillaah.
+
+Berikut laporan pekan ini, February 5th 2024.
+
+
+A. Database
+
+Alhamdulillaah, rancang bangun berangsur berkembang, beberapa diantaranya adalah: Tahfizh, Asrama, Kantin dan Media Inventory. Serta optimasi beberapa table yang dinilai belum sesuai.
+
+
+B. Aplikasi
+
+Alhamdulillaah, aplikasi sudah bisa di download di playstore dengan keyword: ATIBS.
+
+Aplikasi juga sudah mulai masa trial dan sosialisasi kepada para asatidz melalui koordinatornya. Dan masa trial ini akan berlangsung selama 1 bulan sejalan dengan pengembangan aplikasi yang belum selesai seperti akademik, yang akan dibagi kedalam beberapa bagian, walikelas, kurikulum, class inventory, pelajaran, guru mapel, event/perlombaan, eskul, dan lainnya yang dibutuhkan akademik.
+
+Pembagian inilah yang menjadi kendala saya selama ini, harap maklum, saya bukan orang berpendidikan, jadi lambat sekali untuk mengerti hal ini. Dan tentunya, harus mendalaminya supaya saya dapat menyusun skenario untuk aplikasi yang saya rancang.
+
+Kemudian, aplikasi versi desktop sudah bisa di install, sayangnya aplikasi ATIBS versi desktop ini hanya dapat di install di Linux saja. Mungkin bisa di Windows, selama user nya dapat menginstall library GIT dan NPM pada console CMD.
+
+
+C. Komputer
+
+Sebagaimana yang sudah saya sampaikan melalui laporan harian melalui WhatsApp, banyak komputer lama yang (mohon maaf) ngebangke bekas di lab. Saya periksa satu per satu, banyak yang layarnya rusak dan banyak juga yang tidak dapat menyala sama sekali.
+
+Saya sudah mencoba memperbaiki yang masih bisa menyala. Alhamdulillaah, hanya 3 yang sudah normal kembali, kemudian saya install dengan Linux dan aplikasi ATIBS versi desktop khusus Linux saja.
+
+Saya juga sudah menaruh komputer-komputer tersebut di beberapa divisi yang membutuhkan, seperti:
+
+1. Laundry, meskipun sudah menginstall aplikasi ATIBS di hapenya, tapi hape orang laundry ini tidak bisa rendering data dari aplikasi yang saya buat.
+
+2. Pos Security untuk data pembukuan paket dan tamu. 
+
+3. Dapur juga sudah di pasang komputer, dan hape CS sudah dikembalikan ke pihak sebelumnya.
+
+Dan beberapa laptop yg dipakai asatidz juga sudah di install linux dan aplikasi atibs.
+
+
+D. Lainnya
+
+Saya sudah ambil lagi laptop yang saya sembunyikan dan ditaruh di kantor media untuk keperluan development, karna data sudah mulai masuk ke database dan dipakai pengguna dari berbagai divisi, jadinya saya membutuh minimal 1 buah laptop untuk development dan uji coba database di local server. Ini supaya tidak mengganggu data yang sudah masuk dan diproses aplikasi.
+
+
+Demikian seluruh laporan pekan ini, mudah-mudahan dapat dimaklumi.
+Semoga Allah memudahkan segala urusan kita semua.
+
+
+Barakallaahu fiik...
+
+
+-- Abu Ayyub

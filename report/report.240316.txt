@@ -1,0 +1,26 @@
+Bismillaah.
+
+Report of the week #240316
+
+Forwarded to:
+1. Yayasan Aisyah Abu Bakar Mulya (AABUYA)
+2. Mudir AATIBS, Ustadz Yazid Abdul 'Alim
+3. Kepala Divisi Media dan IT, Ustadz Ghazin
+
+Berikut laporan pekan ini, tanggal 16 Maret 2024
+
+1. Mengganti CCTV yang terlalu buram dan sudah tidak layak pakai dengan CCTV yang masih dapat digunakan. Diantaranya kabel konektor yang terlalu rapuh akibat usia atau maintaining sebelumnya yang kurang dimaksimalkan, meski sudah dipasangkan, output pada monitor tidak optimal. 
+
+2. Untuk aplikasi saya sedang mempersiapkan untuk update ke versi 2.0.0, pelan tapi pasti memperbaharui dan optimalisasi.
+
+3. Daily backup dan weekly backup database.
+
+
+Tidak terlalu banyak laporan yang dapat saya sampaikan kali ini, mudah-mudahan dapat dimaklumi.
+Barakallaahu fiikum.
+
+
+--Abu Ayyub
+
+
+

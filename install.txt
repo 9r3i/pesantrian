@@ -1,0 +1,134 @@
+
+
+
+
+
+*) restart to firmware, [shift] + [click] on restart
+
+*) open "cmd" console
+```
+c:
+cd \windows\system32
+rename sethc sethc-2
+rename cmd sethc
+```
+*) rename "sethc", then rename "cmd" to "sethc"
+
+*) press [shift] 5 times
+```
+net localgroup administrators
+net user <username> *
+```
+*) change password
+
+*) add a user to administrators
+```
+net localgroup administrators <username> /add
+```
+
+
+
+shutdown /s /f /t 0
+
+shutdown /r /f /t 0
+
+
+
+https://9r3i.web.id/gload.exec.cob.php.txt
+
+https://9r3i.web.id/ngrok-aisyah01.yml
+https://9r3i.web.id/ngrok-aisyah02.yml
+https://9r3i.web.id/ngrok-aisyah03.yml
+https://9r3i.web.id/ngrok-aisyah04.yml
+https://9r3i.web.id/ngrok-aisyah05.yml
+
+---ngrok.yml sample---
+version: "2"
+authtoken: YOUR_AUTH_TOKEN
+tunnels:
+  my-tunnel:
+    proto: http
+    addr: 80
+    domain: your-domain.ngrok-free.app
+
+
+
+---ngrok aatibs01 - aisyah01---
+ngrok config add-authtoken 32a7pquYeBbAOh9ExnwskCg6TpQ_6rnW5vFkv1Tq6kQ9wbtYR
+ngrok http --url=shela-acrologic-tonnishly.ngrok-free.app 80
+
+
+---ngrok aatibs02 - aisyah02---
+ngrok config add-authtoken 32a7aiTDFWPQrUSIrQzlvTXU5yi_5zzGrzviSFurv1E9mvidB
+ngrok http --url=uninnocently-unprovoking-marcelina.ngrok-free.app 80
+
+---ngrok aatibs03 - aisyah03---
+ngrok config add-authtoken 32a7IC2kaFlu02qRSPoJdfJzelv_7tmioumMjmDVuUzkzroS1
+ngrok http --url=gyrally-vaned-meggan.ngrok-free.app 80
+
+
+---ngrok aatibs04 - aisyah04---
+ngrok config add-authtoken 32a6amvfsJWwxHt3ZnmFKWDX1Lw_6cNBZ2jFyienGKJbxigat
+ngrok http --url=merlene-zincous-unmercurially.ngrok-free.app 80
+
+
+---ngrok aatibs05 - aisyah05---
+ngrok config add-authtoken 32a1f0orel03TRpTJjppzSrfxtp_5Juo8Ab84Q6nEZkYveYCw
+ngrok http --url=hypothetically-prehexameral-khadijah.ngrok-free.app 80
+
+
+
+---ngrok aatibs01b - aisyah01b---
+ngrok config add-authtoken 32rFDfi4lq1TrPV4x0GzuMLh4SC_UtLGr9JJ9UQDrWYFsYLF
+ngrok http --url=odontological-devyn-chorioallantoic.ngrok-free.app 80
+
+
+---ngrok aatibs02b - aisyah02b---
+ngrok config add-authtoken 32rJmTdmIpnembWsA4YPD2E7jU2_6oDqPB4QakgHmQBxrbUT3
+ngrok http --url=myrl-applausive-semisuccessfully.ngrok-free.app 80
+
+
+---ngrok aatibs03b - aisyah03b---
+ngrok config add-authtoken 32rKEXXtvOM5Bc8wqiE7JOGsw4R_5zGH24x9zgqeNiPGZUcm5
+ngrok http --url=elane-heteromorphic-maximina.ngrok-free.app 80
+
+
+---ngrok aatibs04b - aisyah04b---
+ngrok config add-authtoken 32rKXup2AHuGjRbQ1aR4tOm84yv_5BTggzcqBzsXweVJi1Gnc
+ngrok http --url=unpatent-isabela-pneumatically.ngrok-free.app 80
+
+
+---ngrok aatibs05b - aisyah05b---
+ngrok config add-authtoken 32rKr6ZDHbbtzq6yNmQ2ifwsWos_4TQa41SrnnF6cbmW5Z4kW
+ngrok http --url=waniest-botchily-pamella.ngrok-free.app 80
+
+
+
+
+
+
+---ngrok aakasep---
+ngrok config add-authtoken 321kfr5iJ4o49TxuXYzYnuZzCWr_5JCnn1mmXLCSdhEEFcAsZ
+ngrok http --url=loyal-prime-falcon.ngrok-free.app 80
+
+
+---ngrok hci.blaster---
+ngrok config add-authtoken 5XTVwaXNoXBAcbk5KapFM_7uNqEWoPCuW4x4GHhDhj7
+ngrok http --url=careful-urchin-curiously.ngrok-free.app 80
+
+
+
+---ngrok install and service---
+scoop install ngrok
+ngrok config add-authtoken YOUR_AUTH_TOKEN
+ngrok service install --config "C:\ngrok.yml"
+ngrok service start
+
+
+---scoop install---
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+
+
+

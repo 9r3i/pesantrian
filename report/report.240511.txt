@@ -1,0 +1,37 @@
+Bismillaah.
+
+Report of the week #240511
+
+Forwarded to:
+1. Yayasan Aisyah Abu Bakar Mulya (AABUYA)
+2. Mudir AATIBS, Ustadz Yazid Abdul 'Alim
+3. Kepala Divisi Media dan IT, Ustadz Ghazin Fauzi
+
+Berikut laporan pekan ini, tanggal 11 Mei 2024, atibs app v2.0.5
+
+1. Perbaikan data keuangan bulanan kantin.
+
+2. Perbaikan system penilaian akademik.
+
+3. Rekap nilai akademik per semester bedasarkan nilai kumulatif dari: 20% ujian semester, 30% ujian harian, 30% kehadiran dan 20% nilai subjectif guru.
+
+4. Menambah data table transaksi lainya pada aplikasi bendahara, menambah method pembayaran secara tunai, serta selector berdasarkan nama.
+
+5. Menambah table rekap nilai tahfizh per semester berdasarkan nilai kumulatif: nilai ujian semester (50%) dan nilai subjektif (20%) dan nilai kehadiran (30%).
+
+6. Menambah selector bulan pada feature clinic per tahun ajaran.
+
+7. Menambah data keuangan lainnya beserta rinciannya pada feature orang tua.
+
+8. Memberikan penyuluhan/pengarahan/pelatiahan/tutorial kepada kelas Niha'i untuk lebih berhati-hati dalam menggunakan software yang berbentuk bajakan, serta memperkenalkannya kepada software yang lebih ramah, open-source dan freeware, supaya lebih berkah dalam menggunakannya, terutama dalam dakwah, fundraising dan juga belajar agama.
+
+9. Daily backup dan weekly backup database.
+
+10. Next, preparing for web app of atibs, this' gonna need more evaluation to get secure access. And will be reviewed after. 
+
+
+Demikian laporan kali ini, mudah-mudahan dapat difahami.
+Barakallaahu fiikum.
+
+
+--Abu Ayyub

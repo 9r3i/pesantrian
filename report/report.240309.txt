@@ -1,0 +1,36 @@
+Bismillaah.
+
+Report of the week #240309
+
+Forwarded to:
+1. Yayasan Aisyah Abu Bakar Mulya (AABUYA)
+2. Mudir AATIBS, Ustadz Yazid Abdul 'Alim
+3. Kepala Divisi Media dan IT, Ustadz Ghazin
+
+Berikut laporan pekan ini, tanggal 9 Maret 2024
+
+1. Update aplikasi untuk bendahara dan orangtua/wali, memberikan tanggal transaksi pada setiap data SPP dan Tabungan termasuk pada laporan SPP dan Tabungan ke orangtua/wali.
+
+2. Update aplikasi untuk divisi umum dimasukan pada slot Maintenance, secara pak Wawan sebagai kepala divisi umum dan sanpras hanya dapat mengakses slot tersebut. Dengan detail laporan keuangan divisi umum dan anggaran divisi umum bulanan pada tahun ajaran aktif. Ini juga untuk memudahkan Yayasan dalam memantau keuangan di divisi umum. Serta alter table pada database slot general, untuk laporan dan anggaran tersebut.
+
+3. Pemasangan CCTV, pemasangan baru dapat dilakukan pada hari kamis, terkait pesanan kabel yang baru sampai hari selasa dan mesin bor yang dipinjam oleh salah satu pengurus Abu Bakar yang baru dikembalikan hari rabu sore. Sudah terpasang CCTV outdoor waterproof 2 di area luar ma'had unuk memantau sekitar depan benteng kearah timur dan barat. Ini diperlukan untuk pencegahan coretan pada benteng dan pantauan selang air yang sering lepas karetnya.
+
+4. Terpasang CCTV outdoor non-waterproof pada gerbang ke arah ma'had untuk memantau plat nomor kendaraan yang masuk.
+
+5. Jum'at pemasangan CCTV outdoor non-waterproof di pos security lama ke arah kantor untuk memantau benteng dekat kantor dan menghindari security breach dari arah barat yang rawan dimasuki. Semua pemasangan atas arahan kepala divisi umum, ustadz Wawan Wijaya.
+
+6. Monitor CCTV disimpan di pos security, dikelola dan di-maintain oleh divisi keamanan. Dan selama masa pemasangan juga saya dibantu oleh tim security dalam setiap detailnya.
+
+7. Daily backup and weekly backup database.
+
+
+
+
+
+
+Demikian laporan yang dapat saya sampaikan kali ini, mudah-mudahan dapat dimaklumi.
+Barakallaahu fiikum.
+
+
+--Abu Ayyub
+
