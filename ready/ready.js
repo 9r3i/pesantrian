@@ -6,7 +6,8 @@ const HOTEL_BROWSER_APP=true;
   loopLoader();
   /* prepare abl config namespace and host */
   const ABL_NS='atibs';
-  const ABL_HOST='https://sabunjelly.com/atibs/atibs.app';
+  //const ABL_HOST='https://sabunjelly.com/atibs/atibs.app';
+  const ABL_HOST='https://raw.githubusercontent.com/9r3i/pesantrian/master/atibs.app';
   
   /* prepare registered files */
   const REGISTERED_FILES={
