@@ -188,6 +188,7 @@ this.init=function(){
   }else{
     this.statusBar('#309695');
   }
+  ABL_OBJECT.loader(false);
   /* setup backbutton */
   document.addEventListener("backbutton",e=>{
     e.preventDefault();
@@ -363,6 +364,7 @@ this.start=async ()=>{
     }else{
       this.statusBar('#309695');
     }
+    ABL_OBJECT.loader(false);
   },500);
   /* load main page */
   await this.load(this.isLogin()?'apps.html':'main.html');
@@ -606,6 +608,7 @@ this.load=async (page,capp)=>{
   }else{
     this.statusBar('#309695');
   }
+  ABL_OBJECT.loader(false);
 };
 /* build apps */
 this.buildApps=(apps)=>{
