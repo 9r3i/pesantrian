@@ -18,7 +18,6 @@ if(typeof ABL_OBJECT==='undefined'){
   return await (new Pesantrian).start();
 };
 
-
 /* global constant data */
 const BASE_API_HOST="BASE_API_HOST",
 EVA_API_HOST=BASE_API_HOST+"eva/",
@@ -29,9 +28,6 @@ QR_HOST="QR_HOST",
 SCRIPT_HOST=BASE_API_HOST+"script/",
 ONLINE_HOST=BASE_API_HOST+"online/",
 FCM_KEY="FCM_KEY";
-
-
-
 
 /*
 scanner list:
@@ -71,7 +67,7 @@ scanner list:
 this.production=false;
 /* the version code */
 Object.defineProperty(this,'versionCode',{
-  value:352,
+  value:401,
   writable:false,
 });
 /* the version */
@@ -82,10 +78,10 @@ Object.defineProperty(this,'version',{
 
 /* hosts settings */
 this.appHosts={
-  appbase     : REPO_HOST+'atibs/atibs.app',
-  emergency   : REPO_HOST+'atibs/response/emergency',
-  maintenance : REPO_HOST+'atibs/response/maintenance',
-  corner      : REPO_HOST+'atibs/response/corner',
+  appbase     : REPO_HOST+'atibs.app',
+  emergency   : REPO_HOST+'response/emergency',
+  maintenance : REPO_HOST+'response/maintenance',
+  corner      : REPO_HOST+'response/corner',
   cornerImage : CORNER_HOST,
   sweetalert  : 'https://cdn.jsdelivr.net/npm/sweetalert2@11',
   qr_host     : QR_HOST,
