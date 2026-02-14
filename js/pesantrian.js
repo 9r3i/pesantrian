@@ -67,7 +67,7 @@ scanner list:
 this.production=false;
 /* the version code */
 Object.defineProperty(this,'versionCode',{
-  value:401,
+  value:402,
   writable:false,
 });
 /* the version */
@@ -188,7 +188,6 @@ this.init=function(){
   }else{
     this.statusBar('#309695');
   }
-  ABL_OBJECT.loader(false);
   /* setup backbutton */
   document.addEventListener("backbutton",e=>{
     e.preventDefault();
@@ -242,6 +241,10 @@ this.statusBar=function(hex){
     &&window.screen.hasOwnProperty('orientation')
     &&typeof window.screen.orientation.lock==='function'){
     window.screen.orientation.lock('portrait');
+  }
+  /* return always true */
+  if(typeof ABL_OBJECT==='object'&&ABL_OBJECT!==null&&!Array.isArray(ABL_OBJECT)){
+    ABL_OBJECT.loader(false);
   }
   /* return always true */
   return true;
@@ -364,7 +367,6 @@ this.start=async ()=>{
     }else{
       this.statusBar('#309695');
     }
-    ABL_OBJECT.loader(false);
   },500);
   /* load main page */
   await this.load(this.isLogin()?'apps.html':'main.html');
@@ -608,7 +610,6 @@ this.load=async (page,capp)=>{
   }else{
     this.statusBar('#309695');
   }
-  ABL_OBJECT.loader(false);
 };
 /* build apps */
 this.buildApps=(apps)=>{
